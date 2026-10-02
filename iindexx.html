@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CvSU Midterm Examination Schedule</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cvsu: {
+              50: '#eef8f3',
+              100: '#d7efe3',
+              500: '#0b7b4a',
+              700: '#005a36',
+              800: '#00472a',
+              900: '#00331e',
+            },
+            accent: {
+              400: '#fbbf24',
+              500: '#f59e0b',
+              600: '#d97706',
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @media print {
+      .no-print { display: none !important; }
+      body { background: #fff !important; color: #000 !important; }
+      .print-shadow-none { box-shadow: none !important; border: 1px solid #ccc !important; }
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans min-h-screen flex flex-col antialiased selection:bg-cvsu-500 selection:text-white">
+
+  <!-- HEADER -->
+  <header class="bg-cvsu-900 border-b-4 border-accent-500 text-white shadow-lg sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex flex-wrap items-center justify-between gap-4">
+      <div class="flex items-center space-x-3.5">
+        <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-accent-500 to-amber-300 p-0.5 shadow-md">
+          <div class="w-full h-full bg-cvsu-900 rounded-[10px] flex items-center justify-center font-extrabold text-accent-400 text-lg tracking-wider">
+            CvSU
+          </div>
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <h1 class="text-xl sm:text-2xl font-extrabold tracking-tight text-white leading-none">
+              CvSU Midterm Examination Schedule
+            </h1>
+            <span class="text-[11px] font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 px-2 py-0.5 rounded-full">
+              1st Sem AY 2026–2027
+            </span>
+          </div>
+          <p class="text-xs text-emerald-200/80 mt-1 font-medium">
+            Tanza Campus • Departmental Examination Matrix
+          </p>
+        </div>
+      </div>
+
+      <!-- Action buttons & Export -->
+      <div class="flex items-center gap-2.5 no-print">
+        <button id="btnExport" onclick="exportFilteredCSV()" class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-emerald-800/80 hover:bg-emerald-700 text-emerald-100 border border-emerald-600/40 transition shadow-sm">
+          <svg class="w-4 h-4 text-emerald-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+          Export CSV
+        </button>
+        <button onclick="window.print()" class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-emerald-800/80 hover:bg-emerald-700 text-emerald-100 border border-emerald-600/40 transition shadow-sm">
+          <svg class="w-4 h-4 text-emerald-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+          Print Schedule
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- NAVIGATION TABS -->
+  <div class="bg-white border-b border-slate-200 no-print sticky top-[69px] z-30 shadow-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4 overflow-x-auto">
+      <nav class="flex space-x-1 py-2">
+        <button class="flex items-center gap-2 px-3.5 py-1.5 rounded-md font-semibold text-xs text-cvsu-800 bg-cvsu-50 border border-cvsu-200 shadow-xs">
+          <svg class="w-4 h-4 text-cvsu-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+          Subgroup Schedule
+        </button>
+      </nav>
+
+      <div class="flex items-center gap-2">
+        <span class="text-xs font-semibold text-slate-500">View Mode:</span>
+        <button id="viewCardBtn" onclick="setViewMode('cards')" class="p-1.5 rounded bg-cvsu-100 text-cvsu-800 hover:bg-cvsu-200 transition" title="Card View">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
+        </button>
+        <button id="viewTableBtn" onclick="setViewMode('table')" class="p-1.5 rounded text-slate-500 hover:bg-slate-100 transition" title="Table View">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN CONTAINER -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex-1 w-full space-y-6">
+
+    <!-- SUBGROUP SELECTOR PANEL -->
+    <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm p-5 sm:p-6 no-print">
+      <div class="flex items-center justify-between pb-4 mb-4 border-b border-slate-100">
+        <div>
+          <h2 class="text-base sm:text-lg font-bold text-slate-900 flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-cvsu-500"></span>
+            Filter by Program, Year & Section
+          </h2>
+          <p class="text-xs text-slate-500 mt-0.5">Select your program details below to isolate your subgroup's exam schedule.</p>
+        </div>
+        <button onclick="resetFilters()" class="text-xs font-semibold text-rose-600 hover:text-rose-700 bg-rose-50 hover:bg-rose-100 px-3 py-1.5 rounded-lg transition">
+          Clear Filters
+        </button>
+      </div>
+
+      <!-- FILTER CONTROLS -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <!-- Program -->
+        <div>
+          <label for="filterProgram" class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1.5">
+            1. Program / Degree
+          </label>
+          <div class="relative">
+            <select id="filterProgram" onchange="onProgramChange()" class="w-full bg-slate-50 border border-slate-300 text-slate-800 text-sm rounded-xl focus:ring-2 focus:ring-cvsu-500 focus:border-cvsu-500 p-2.5 font-medium appearance-none">
+              <option value="">All Programs</option>
+            </select>
+            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-slate-400">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Year Level -->
+        <div>
+          <label for="filterYear" class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1.5">
+            2. Year Level
+          </label>
+          <div class="relative">
+            <select id="filterYear" onchange="onYearChange()" class="w-full bg-slate-50 border border-slate-300 text-slate-800 text-sm rounded-xl focus:ring-2 focus:ring-cvsu-500 focus:border-cvsu-500 p-2.5 font-medium appearance-none">
+              <option value="">All Years</option>
+            </select>
+            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-slate-400">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section -->
+        <div>
+          <label for="filterSection" class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1.5">
+            3. Section
+          </label>
+          <div class="relative">
+            <select id="filterSection" onchange="onSectionChange()" class="w-full bg-slate-50 border border-slate-300 text-slate-800 text-sm rounded-xl focus:ring-2 focus:ring-cvsu-500 focus:border-cvsu-500 p-2.5 font-medium appearance-none">
+              <option value="">All Sections</option>
+            </select>
+            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-slate-400">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Direct Subgroup Dropdown -->
+        <div>
+          <label for="filterSubgroup" class="block text-xs font-bold uppercase tracking-wider text-cvsu-700 mb-1.5">
+            Target Subgroup Code
+          </label>
+          <div class="relative">
+            <select id="filterSubgroup" onchange="onSubgroupChange()" class="w-full bg-emerald-50 border border-emerald-300 text-cvsu-900 font-bold text-sm rounded-xl focus:ring-2 focus:ring-cvsu-500 focus:border-cvsu-500 p-2.5 appearance-none">
+              <option value="">All Subgroups</option>
+            </select>
+            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-emerald-700">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECOND ROW: DAY & SEARCH -->
+      <div class="mt-4 pt-4 border-t border-slate-100 flex flex-wrap items-center justify-between gap-4">
+        <!-- Day filter pills -->
+        <div class="flex items-center gap-1.5 flex-wrap">
+          <span class="text-xs font-bold uppercase tracking-wider text-slate-500 mr-1">Day:</span>
+          <button onclick="setDayFilter('')" id="dayBtn-all" class="day-filter-btn px-3 py-1 text-xs font-bold rounded-lg bg-cvsu-700 text-white shadow-xs">All</button>
+          <button onclick="setDayFilter('Mon')" id="dayBtn-Mon" class="day-filter-btn px-3 py-1 text-xs font-semibold rounded-lg bg-slate-100 text-slate-700 hover:bg-slate-200">Mon</button>
+          <button onclick="setDayFilter('Tue')" id="dayBtn-Tue" class="day-filter-btn px-3 py-1 text-xs font-semibold rounded-lg bg-slate-100 text-slate-700 hover:bg-slate-200">Tue</button>
+          <button onclick="setDayFilter('Wed')" id="dayBtn-Wed" class="day-filter-btn px-3 py-1 text-xs font-semibold rounded-lg bg-slate-100 text-slate-700 hover:bg-slate-200">Wed</button>
+          <button onclick="setDayFilter('Thu')" id="dayBtn-Thu" class="day-filter-btn px-3 py-1 text-xs font-semibold rounded-lg bg-slate-100 text-slate-700 hover:bg-slate-200">Thu</button>
+          <button onclick="setDayFilter('Fri')" id="dayBtn-Fri" class="day-filter-btn px-3 py-1 text-xs font-semibold rounded-lg bg-slate-100 text-slate-700 hover:bg-slate-200">Fri</button>
+          <button onclick="setDayFilter('Sat')" id="dayBtn-Sat" class="day-filter-btn px-3 py-1 text-xs font-semibold rounded-lg bg-slate-100 text-slate-700 hover:bg-slate-200">Sat</button>
+        </div>
+
+        <!-- Global search input -->
+        <div class="relative w-full sm:w-72">
+          <input type="text" id="searchInput" oninput="applyFilters()" placeholder="Search Subject, Proctor, Room..." class="w-full pl-9 pr-4 py-2 bg-slate-50 border border-slate-300 text-xs rounded-xl focus:ring-2 focus:ring-cvsu-500 focus:border-cvsu-500 font-medium">
+          <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STATS BAR -->
+    <div class="flex flex-wrap items-center justify-between gap-3 text-xs text-slate-500 px-1">
+      <div class="flex items-center gap-2">
+        <span class="font-semibold text-slate-800" id="resultCount">Showing 0 exams</span>
+        <span class="text-slate-300">•</span>
+        <span id="activeFilterBadge" class="bg-cvsu-100 text-cvsu-800 font-semibold px-2 py-0.5 rounded text-[11px]">All Subgroups</span>
+      </div>
+      <div class="text-[11px] text-slate-400">
+        CvSU Tanza Campus Academic Midterms
+      </div>
+    </div>
+
+    <!-- RESULTS DISPLAY CONTAINER -->
+    <div id="resultsContainer"></div>
+
+    <!-- EMPTY STATE -->
+    <div id="emptyState" class="hidden text-center py-16 bg-white rounded-2xl border border-slate-200/80 p-6">
+      <div class="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-3 text-slate-400">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      </div>
+      <h3 class="text-base font-bold text-slate-800">No examination schedules match your filters</h3>
+      <p class="text-xs text-slate-500 mt-1 max-w-sm mx-auto">Try clearing your filters or changing your Program, Year, or Section selections.</p>
+      <button onclick="resetFilters()" class="mt-4 px-4 py-2 bg-cvsu-700 hover:bg-cvsu-800 text-white text-xs font-semibold rounded-xl shadow-xs transition">
+        Reset All Filters
+      </button>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-500 no-print mt-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <p class="font-medium text-slate-700">CvSU Tanza Campus Examination Schedule Portal</p>
+      <p class="text-[11px] text-slate-400 mt-0.5">Automated Subgroup Distribution System • 1st Semester AY 2026–2027</p>
+    </div>
+  </footer>
+
+  <script>
+    const embeddedData = [
+      {"Activity ID": "91", "Day": "Mon", "Start Time": "08:00 - 10:00 AM", "Duration": "4", "Subject": "DCT 65", "Proctor": "MS. MA. WOODELYN REYES", "Subgroup": "BSIT4-1", "Room": "TMA 203", "Activity Tag": "Lecture"},
+      {"Activity ID": "92", "Day": "Mon", "Start Time": "08:00 - 10:00 AM", "Duration": "4", "Subject": "DCT 65", "Proctor": "MS. LAARNI MHAE BUCOR", "Subgroup": "BSIT4-2", "Room": "TCC 25", "Activity Tag": "Lecture"},
+      {"Activity ID": "199", "Day": "Mon", "Start Time": "08:00 - 10:00 AM", "Duration": "4", "Subject": "FITT 3", "Proctor": "MR. ANACLETO MARCELINO", "Subgroup": "BEE2-1", "Room": "TCC 12", "Activity Tag": "Lecture"},
+      {"Activity ID": "200", "Day": "Mon", "Start Time": "08:00 - 10:00 AM", "Duration": "4", "Subject": "FITT 3", "Proctor": "MR. ANGELO M. CASTRO", "Subgroup": "BEE2-2", "Room": "TCC 18", "Activity Tag": "Lecture"},
+      {"Activity ID": "201", "Day": "Mon", "Start Time": "08:00 - 10:00 AM", "Duration": "4", "Subject": "FITT 3", "Proctor": "MR. ANGELO T. OMIPING", "Subgroup": "BEE2-3", "Room": "TCC 20", "Activity Tag": "Lecture"},
+      {"Activity ID": "207", "Day": "Mon", "Start Time": "08:00 - 10:00 AM", "Duration": "4", "Subject": "FITT 3", "Proctor": "MR. ARBIESON F. BRAZA", "Subgroup": "BSE-E2-1", "Room": "TCC 11", "Activity Tag": "Lecture"},
+      {"Activity ID": "208", "Day": "Mon", "Start Time": "08:00 - 10:00 AM", "Duration": "4", "Subject": "FITT 3", "Proctor": "MR. CRISOSTOMO M. SIBULO", "Subgroup": "BSE-E2-2", "Room": "TCC 13", "Activity Tag": "Lecture"},
+      {"Activity ID": "209", "Day": "Mon", "Start Time": "08:00 - 10:00 AM", "Duration": "4", "Subject": "FITT 3", "Proctor": "MR. HYRAM ADRIENNE M. SALINAS", "Subgroup": "BSE-E2-3", "Room": "TCC 23", "Activity Tag": "Lecture"},
+      {"Activity ID": "210", "Day": "Mon", "Start Time": "08:00 - 10:00 AM", "Duration": "4", "Subject": "FITT 3", "Proctor": "MR. JENICE G. ORPEZA", "Subgroup": "BSE-E2-4", "Room": "TCC 30", "Activity Tag": "Lecture"},
+      {"Activity ID": "211", "Day": "Mon", "Start Time": "08:00 - 10:00 AM", "Duration": "4", "Subject": "FITT 3", "Proctor": "MR. JETHRO DELOS ANGELES", "Subgroup": "BSE-M2-1", "Room": "TCC 3", "Activity Tag": "Lecture"},
+      {"Activity ID": "329", "Day": "Mon", "Start Time": "08:00 - 10:00 AM", "Duration": "4", "Subject": "GNED 10", "Proctor": "MR. JOHN MELBERT BUEN", "Subgroup": "BSIT2-1", "Room": "TCC 2", "Activity Tag": "Lecture"},
+      {"Activity ID": "330", "Day": "Mon", "Start Time": "08:00 - 10:00 AM", "Duration": "4", "Subject": "GNED 10", "Proctor": "MR. JOHN MHIKE JOSOL", "Subgroup": "BSIT2-2", "Room": "TCC 26", "Activity Tag": "Lecture"},
+      {"Activity ID": "331", "Day": "Mon", "Start Time": "08:00 - 10:00 AM", "Duration": "4", "Subject": "GNED 10", "Proctor": "MR. JONVIC L. SINGCAY", "Subgroup": "BSIT2-3", "Room": "TCC 5", "Activity Tag": "Lecture"},
+      {"Activity ID": "332", "Day": "Mon", "Start Time": "08:00 - 10:00 AM", "Duration": "4", "Subject": "GNED 10", "Proctor": "MR. JULIO CASTILLO JR.", "Subgroup": "BSIT2-4", "Room": "TCC 16", "Activity Tag": "Lecture"},
+      {"Activity ID": "333", "Day": "Mon", "Start Time": "08:00 - 10:00 AM", "Duration": "4", "Subject": "GNED 10", "Proctor": "MS. NOEMI A. PERIDA", "Subgroup": "BSIT2-5", "Room": "TMA 202", "Activity Tag": "Lecture"},
+      {"Activity ID": "334", "Day": "Mon", "Start Time": "08:00 - 10:00 AM", "Duration": "4", "Subject": "GNED 10", "Proctor": "MR. RICHARD ADRIAN KENN D. PARGAN", "Subgroup": "BSIT2-6", "Room": "TCC 14", "Activity Tag": "Lecture"},
+      {"Activity ID": "366", "Day": "Mon", "Start Time": "08:00 - 10:00 AM", "Duration": "4", "Subject": "GNED 12", "Proctor": "MS. JESSICA AVON C. QUEZADA", "Subgroup": "BEE3-1", "Room": "TCC 29", "Activity Tag": "Lecture"},
+      {"Activity ID": "367", "Day": "Mon", "Start Time": "08:00 - 10:00 AM", "Duration": "4", "Subject": "GNED 12", "Proctor": "MS. MAGELYN M. RIVERA", "Subgroup": "BEE3-2", "Room": "TCC 1", "Activity Tag": "Lecture"},
+      {"Activity ID": "368", "Day": "Mon", "Start Time": "08:00 - 10:00 AM", "Duration": "4", "Subject": "GNED 12", "Proctor": "MS. MARIECHELLE L. CORREO", "Subgroup": "BSBA2-1", "Room": "TCC 8", "Activity Tag": "Lecture"},
+      {"Activity ID": "369", "Day": "Mon", "Start Time": "08:00 - 10:00 AM", "Duration": "4", "Subject": "GNED 12", "Proctor": "MS. MARY ANN L. ANONAS", "Subgroup": "BSBA2-2", "Room": "TMA 104", "Activity Tag": "Lecture"},
+      {"Activity ID": "370", "Day": "Mon", "Start Time": "08:00 - 10:00 AM", "Duration": "4", "Subject": "GNED 12", "Proctor": "MS. MARY JOY ANGELIQUE R. MOJICA", "Subgroup": "BSBA2-3", "Room": "TCC 27", "Activity Tag": "Lecture"},
+      {"Activity ID": "371", "Day": "Mon", "Start Time": "08:00 - 10:00 AM", "Duration": "4", "Subject": "GNED 12", "Proctor": "MS. MYLA JANE HENEGABUAS", "Subgroup": "BSBA2-4", "Room": "TCC 15", "Activity Tag": "Lecture"},
+      {"Activity ID": "372", "Day": "Mon", "Start Time": "08:00 - 10:00 AM", "Duration": "4", "Subject": "GNED 12", "Proctor": "MR. KEVIN C. LUCILO", "Subgroup": "BSBA2-5", "Room": "TCC 7", "Activity Tag": "Lecture"},
+      {"Activity ID": "373", "Day": "Mon", "Start Time": "08:00 - 10:00 AM", "Duration": "4", "Subject": "GNED 12", "Proctor": "MS. QUINCY MAE M. MONTEREY", "Subgroup": "BSE-E3-1", "Room": "TCC 21", "Activity Tag": "Lecture"},
+      {"Activity ID": "374", "Day": "Mon", "Start Time": "08:00 - 10:00 AM", "Duration": "4", "Subject": "GNED 12", "Proctor": "MS. ROJELYN T. PEDIDA", "Subgroup": "BSE-E3-2", "Room": "TCC 24", "Activity Tag": "Lecture"},
+      {"Activity ID": "375", "Day": "Mon", "Start Time": "08:00 - 10:00 AM", "Duration": "4", "Subject": "GNED 12", "Proctor": "MS. YOHANAH GUILLERMO", "Subgroup": "BSE-M3-1", "Room": "TCC 10", "Activity Tag": "Lecture"},
+      {"Activity ID": "482", "Day": "Mon", "Start Time": "08:00 - 10:00 AM", "Duration": "4", "Subject": "DCIT 21", "Proctor": "MR. MUHAIMIN P. MACAPUNDAG", "Subgroup": "BSIT1-4", "Room": "TCC 4", "Activity Tag": "Lecture"},
+      {"Activity ID": "483", "Day": "Mon", "Start Time": "08:00 - 10:00 AM", "Duration": "4", "Subject": "DCIT 21", "Proctor": "MR. JANOS P. RAPANUT", "Subgroup": "BSIT1-5", "Room": "TCC 6", "Activity Tag": "Lecture"},
+      {"Activity ID": "484", "Day": "Mon", "Start Time": "08:00 - 10:00 AM", "Duration": "4", "Subject": "DCIT 21", "Proctor": "MS. RICHELLE ROZOL", "Subgroup": "BSIT1-6", "Room": "TMA 103", "Activity Tag": "Lecture"},
+      {"Activity ID": "531", "Day": "Mon", "Start Time": "08:00 - 10:00 AM", "Duration": "4", "Subject": "DCIT 21", "Proctor": "MR. JULIUS ANGELO B. SARREAL", "Subgroup": "BSIT1-1", "Room": "TMA 105", "Activity Tag": "Lecture"},
+      {"Activity ID": "532", "Day": "Mon", "Start Time": "08:00 - 10:00 AM", "Duration": "4", "Subject": "DCIT 21", "Proctor": "MR. RODERICK VILLACAMPA", "Subgroup": "BSIT1-2", "Room": "TCC 19", "Activity Tag": "Lecture"},
+      {"Activity ID": "533", "Day": "Mon", "Start Time": "08:00 - 10:00 AM", "Duration": "4", "Subject": "DCIT 21", "Proctor": "MR. MARION ADAM S. PURUGGANAN", "Subgroup": "BSIT1-3", "Room": "TMA 201", "Activity Tag": "Lecture"},
+      {"Activity ID": "534", "Day": "Mon", "Start Time": "08:00 - 10:00 AM", "Duration": "4", "Subject": "DCIT 21", "Proctor": "MS. GECILLE MARIE A. REYES", "Subgroup": "BSIT1-7", "Room": "TCC 17", "Activity Tag": "Lecture"},
+      {"Activity ID": "535", "Day": "Mon", "Start Time": "08:00 - 10:00 AM", "Duration": "4", "Subject": "DCIT 21", "Proctor": "MR. FRANCE ANDRIE AÑASCO", "Subgroup": "BSIT1-8", "Room": "TMA 204", "Activity Tag": "Lecture"},
+      {"Activity ID": "551", "Day": "Mon", "Start Time": "08:00 - 10:00 AM", "Duration": "4", "Subject": "ITEC 80", "Proctor": "MR. JOSEPH O. SABAYBAY", "Subgroup": "BSIT3-1", "Room": "TCC 22", "Activity Tag": "Lecture"},
+      {"Activity ID": "552", "Day": "Mon", "Start Time": "08:00 - 10:00 AM", "Duration": "4", "Subject": "ITEC 80", "Proctor": "MS. MICAH M. SANCHEZ", "Subgroup": "BSIT3-2", "Room": "TCC 28", "Activity Tag": "Lecture"},
+      {"Activity ID": "553", "Day": "Mon", "Start Time": "08:00 - 10:00 AM", "Duration": "4", "Subject": "ITEC 80", "Proctor": "MR. JEFFREY M. DELGADO", "Subgroup": "BSIT3-3", "Room": "TCC 9", "Activity Tag": "Lecture"},
+      {"Activity ID": "554", "Day": "Mon", "Start Time": "08:00 - 10:00 AM", "Duration": "4", "Subject": "ITEC 80", "Proctor": "MR. JOHN PAUL P. DE TORRES", "Subgroup": "BSIT3-4", "Room": "TMA 101", "Activity Tag": "Lecture"},
+      {"Activity ID": "1", "Day": "Mon", "Start Time": "10:00 AM - 12:00 NN", "Duration": "4", "Subject": "BADM 24", "Proctor": "MR. JOHN MELBERT BUEN", "Subgroup": "BSBA2-1", "Room": "TCC 16", "Activity Tag": "Lecture"},
+      {"Activity ID": "2", "Day": "Mon", "Start Time": "10:00 AM - 12:00 NN", "Duration": "4", "Subject": "BADM 24", "Proctor": "MR. JULIO CASTILLO JR.", "Subgroup": "BSBA2-2", "Room": "TCC 22", "Activity Tag": "Lecture"},
+      {"Activity ID": "3", "Day": "Mon", "Start Time": "10:00 AM - 12:00 NN", "Duration": "4", "Subject": "BADM 24", "Proctor": "MR. ANGELO M. CASTRO", "Subgroup": "BSBA2-3", "Room": "TCC 26", "Activity Tag": "Lecture"},
+      {"Activity ID": "4", "Day": "Mon", "Start Time": "10:00 AM - 12:00 NN", "Duration": "4", "Subject": "BADM 24", "Proctor": "DR. RITCH M. BANATE", "Subgroup": "BSBA2-4", "Room": "TCC 6", "Activity Tag": "Lecture"},
+      {"Activity ID": "5", "Day": "Mon", "Start Time": "10:00 AM - 12:00 NN", "Duration": "4", "Subject": "BADM 24", "Proctor": "MR. JOHN PAUL P. DE TORRES", "Subgroup": "BSBA2-5", "Room": "TCC 19", "Activity Tag": "Lecture"},
+      {"Activity ID": "6", "Day": "Mon", "Start Time": "10:00 AM - 12:00 NN", "Duration": "4", "Subject": "BADM 24", "Proctor": "DR. MELONA I. SAQUIN", "Subgroup": "BSBA2-Irreg1", "Room": "TCC 17", "Activity Tag": "Lecture"},
+      {"Activity ID": "7", "Day": "Mon", "Start Time": "10:00 AM - 12:00 NN", "Duration": "4", "Subject": "BADM 24", "Proctor": "MR. ANACLETO MARCELINO", "Subgroup": "BSBA2-Irreg2", "Room": "TMA 103", "Activity Tag": "Lecture"},
+      {"Activity ID": "8", "Day": "Mon", "Start Time": "10:00 AM - 12:00 NN", "Duration": "4", "Subject": "BADM 26", "Proctor": "MR. HYRAM ADRIENNE M. SALINAS", "Subgroup": "BSBA3-1", "Room": "TMA 202", "Activity Tag": "Lecture"},
+      {"Activity ID": "9", "Day": "Mon", "Start Time": "10:00 AM - 12:00 NN", "Duration": "4", "Subject": "BADM 26", "Proctor": "MS. MARY ROSE E. ELAMPARO", "Subgroup": "BSBA3-2", "Room": "TMA 203", "Activity Tag": "Lecture"},
+      {"Activity ID": "10", "Day": "Mon", "Start Time": "10:00 AM - 12:00 NN", "Duration": "4", "Subject": "BADM 26", "Proctor": "MS. DEBBIE ROSE B. FABIAN", "Subgroup": "BSBA3-3", "Room": "TCC 4", "Activity Tag": "Lecture"},
+      {"Activity ID": "33", "Day": "Mon", "Start Time": "10:00 AM - 12:00 NN", "Duration": "4", "Subject": "BSEE 110", "Proctor": "MR. FRANCE ANDRIE AÑASCO", "Subgroup": "BSE-E2-1", "Room": "TCC 8", "Activity Tag": "Lecture"},
+      {"Activity ID": "34", "Day": "Mon", "Start Time": "10:00 AM - 12:00 NN", "Duration": "4", "Subject": "BSEE 110", "Proctor": "MS. LAARNI MHAE BUCOR", "Subgroup": "BSE-E2-2", "Room": "TCC 29", "Activity Tag": "Lecture"},
+      {"Activity ID": "35", "Day": "Mon", "Start Time": "10:00 AM - 12:00 NN", "Duration": "4", "Subject": "BSEE 110", "Proctor": "MR. ARBIESON F. BRAZA", "Subgroup": "BSE-E2-3", "Room": "TCC 5", "Activity Tag": "Lecture"},
+      {"Activity ID": "36", "Day": "Mon", "Start Time": "10:00 AM - 12:00 NN", "Duration": "4", "Subject": "BSEE 110", "Proctor": "MS. MARIECHELLE L. CORREO", "Subgroup": "BSE-E2-4", "Room": "TCC 12", "Activity Tag": "Lecture"},
+      {"Activity ID": "174", "Day": "Mon", "Start Time": "10:00 AM - 12:00 NN", "Duration": "4", "Subject": "FITT 1", "Proctor": "MR. JOHN MHIKE JOSOL", "Subgroup": "BSBA1-1", "Room": "TCC 7", "Activity Tag": "Lecture"},
+      {"Activity ID": "175", "Day": "Mon", "Start Time": "10:00 AM - 12:00 NN", "Duration": "4", "Subject": "FITT 1", "Proctor": "MR. MUHAIMIN P. MACAPUNDAG", "Subgroup": "BSBA1-2", "Room": "TCC 15", "Activity Tag": "Lecture"},
+      {"Activity ID": "176", "Day": "Mon", "Start Time": "10:00 AM - 12:00 NN", "Duration": "4", "Subject": "FITT 1", "Proctor": "MR. JANOS P. RAPANUT", "Subgroup": "BSBA1-3", "Room": "TCC 1", "Activity Tag": "Lecture"},
+      {"Activity ID": "177", "Day": "Mon", "Start Time": "10:00 AM - 12:00 NN", "Duration": "4", "Subject": "FITT 1", "Proctor": "MR. CRISOSTOMO M. SIBULO", "Subgroup": "BSBA1-4", "Room": "TMA 101", "Activity Tag": "Lecture"},
+      {"Activity ID": "178", "Day": "Mon", "Start Time": "10:00 AM - 12:00 NN", "Duration": "4", "Subject": "FITT 1", "Proctor": "MR. RODERICK VILLACAMPA", "Subgroup": "BSBA1-5", "Room": "TCC 10", "Activity Tag": "Lecture"},
+      {"Activity ID": "179", "Day": "Mon", "Start Time": "10:00 AM - 12:00 NN", "Duration": "4", "Subject": "FITT 1", "Proctor": "MS. MARY ANN L. ANONAS", "Subgroup": "BSBA1-6", "Room": "TCC 18", "Activity Tag": "Lecture"},
+      {"Activity ID": "180", "Day": "Mon", "Start Time": "10:00 AM - 12:00 NN", "Duration": "4", "Subject": "FITT 1", "Proctor": "MS. SHEERIE MHEL COLINA", "Subgroup": "BSBA1-7", "Room": "TCC 14", "Activity Tag": "Lecture"},
+      {"Activity ID": "181", "Day": "Mon", "Start Time": "10:00 AM - 12:00 NN", "Duration": "4", "Subject": "FITT 1", "Proctor": "MS. MYLA JANE HENEGABUAS", "Subgroup": "BSBA1-8", "Room": "TCC 23", "Activity Tag": "Lecture"},
+      {"Activity ID": "240", "Day": "Mon", "Start Time": "10:00 AM - 1:00 PM", "Duration": "6", "Subject": "GNED 03", "Proctor": "MS. YOHANAH GUILLERMO", "Subgroup": "BSE-E1-1", "Room": "TCC 24", "Activity Tag": "Lecture"},
+      {"Activity ID": "241", "Day": "Mon", "Start Time": "10:00 AM - 1:00 PM", "Duration": "6", "Subject": "GNED 03", "Proctor": "MR. KEVIN C. LUCILO", "Subgroup": "BSE-E1-2", "Room": "TCC 21", "Activity Tag": "Lecture"},
+      {"Activity ID": "242", "Day": "Mon", "Start Time": "10:00 AM - 1:00 PM", "Duration": "6", "Subject": "GNED 03", "Proctor": "MS. QUINCY MAE M. MONTEREY", "Subgroup": "BSE-E1-3", "Room": "TCC 25", "Activity Tag": "Lecture"},
+      {"Activity ID": "243", "Day": "Mon", "Start Time": "10:00 AM - 1:00 PM", "Duration": "6", "Subject": "GNED 03", "Proctor": "MR. ANGELO T. OMIPING", "Subgroup": "BSE-E1-4", "Room": "TCC 27", "Activity Tag": "Lecture"},
+      {"Activity ID": "244", "Day": "Mon", "Start Time": "10:00 AM - 1:00 PM", "Duration": "6", "Subject": "GNED 03", "Proctor": "MR. JENICE G. ORPEZA", "Subgroup": "BSE-E1-5", "Room": "TMA 201", "Activity Tag": "Lecture"},
+      {"Activity ID": "245", "Day": "Mon", "Start Time": "10:00 AM - 1:00 PM", "Duration": "6", "Subject": "GNED 03", "Proctor": "MR. RICHARD ADRIAN KENN D. PARGAN", "Subgroup": "BSE-E1-6", "Room": "TCC 9", "Activity Tag": "Lecture"},
+      {"Activity ID": "246", "Day": "Mon", "Start Time": "10:00 AM - 1:00 PM", "Duration": "6", "Subject": "GNED 03", "Proctor": "MS. ROJELYN T. PEDIDA", "Subgroup": "BSE-M1-1", "Room": "TMA 204", "Activity Tag": "Lecture"},
+      {"Activity ID": "247", "Day": "Mon", "Start Time": "10:00 AM - 1:00 PM", "Duration": "6", "Subject": "GNED 03", "Proctor": "MS. MAGELYN M. RIVERA", "Subgroup": "BSE-M1-2", "Room": "TCC 28", "Activity Tag": "Lecture"},
+      {"Activity ID": "358", "Day": "Mon", "Start Time": "10:00 AM - 12:00 NN", "Duration": "4", "Subject": "GNED 11", "Proctor": "MS. NOEMI A. PERIDA", "Subgroup": "BSIT1-1", "Room": "TCC 3", "Activity Tag": "Lecture"},
+      {"Activity ID": "359", "Day": "Mon", "Start Time": "10:00 AM - 12:00 NN", "Duration": "4", "Subject": "GNED 11", "Proctor": "MR. MARION ADAM S. PURUGGANAN", "Subgroup": "BSIT1-2", "Room": "TCC 20", "Activity Tag": "Lecture"},
+      {"Activity ID": "360", "Day": "Mon", "Start Time": "10:00 AM - 12:00 NN", "Duration": "4", "Subject": "GNED 11", "Proctor": "MS. JESSICA AVON C. QUEZADA", "Subgroup": "BSIT1-3", "Room": "TCC 11", "Activity Tag": "Lecture"},
+      {"Activity ID": "361", "Day": "Mon", "Start Time": "10:00 AM - 12:00 NN", "Duration": "4", "Subject": "GNED 11", "Proctor": "MS. GECILLE MARIE A. REYES", "Subgroup": "BSIT1-4", "Room": "TMA 104", "Activity Tag": "Lecture"},
+      {"Activity ID": "362", "Day": "Mon", "Start Time": "10:00 AM - 12:00 NN", "Duration": "4", "Subject": "GNED 11", "Proctor": "MS. MA. WOODELYN REYES", "Subgroup": "BSIT1-5", "Room": "TMA 105", "Activity Tag": "Lecture"},
+      {"Activity ID": "363", "Day": "Mon", "Start Time": "10:00 AM - 12:00 NN", "Duration": "4", "Subject": "GNED 11", "Proctor": "MR. JOSEPH O. SABAYBAY", "Subgroup": "BSIT1-6", "Room": "TCC 30", "Activity Tag": "Lecture"},
+      {"Activity ID": "364", "Day": "Mon", "Start Time": "10:00 AM - 12:00 NN", "Duration": "4", "Subject": "GNED 11", "Proctor": "MR. JOSEPH O. SABAYBAY", "Subgroup": "BSIT1-7", "Room": "TCC 13", "Activity Tag": "Lecture"},
+      {"Activity ID": "365", "Day": "Mon", "Start Time": "10:00 AM - 12:00 NN", "Duration": "4", "Subject": "GNED 11", "Proctor": "MS. MICAH M. SANCHEZ", "Subgroup": "BSIT1-8", "Room": "TCC 2", "Activity Tag": "Lecture"},
+      {"Activity ID": "14", "Day": "Mon", "Start Time": "12:00 NN - 2:00 PM", "Duration": "4", "Subject": "BEEd 23", "Proctor": "MR. AUDREY GERARD ADVINCULA", "Subgroup": "BEE2-1", "Room": "TMA 202", "Activity Tag": "Lecture"},
+      {"Activity ID": "15", "Day": "Mon", "Start Time": "12:00 NN - 2:00 PM", "Duration": "4", "Subject": "BEEd 23", "Proctor": "MR. FRANCE ANDRIE AÑASCO", "Subgroup": "BEE2-2", "Room": "TCC 2", "Activity Tag": "Lecture"},
+      {"Activity ID": "16", "Day": "Mon", "Start Time": "12:00 NN - 2:00 PM", "Duration": "4", "Subject": "BEEd 23", "Proctor": "MS. LAARNI MHAE BUCOR", "Subgroup": "BEE2-3", "Room": "TCC 11", "Activity Tag": "Lecture"},
+      {"Activity ID": "27", "Day": "Mon", "Start Time": "12:00 NN - 2:00 PM", "Duration": "4", "Subject": "BEEd 33", "Proctor": "MR. JOHN MELBERT BUEN", "Subgroup": "BEE3-1", "Room": "TCC 19", "Activity Tag": "Lecture"},
+      {"Activity ID": "28", "Day": "Mon", "Start Time": "12:00 NN - 2:00 PM", "Duration": "4", "Subject": "BEEd 33", "Proctor": "MR. ARBIESON F. BRAZA", "Subgroup": "BEE3-2", "Room": "TCC 20", "Activity Tag": "Lecture"},
+      {"Activity ID": "59", "Day": "Mon", "Start Time": "12:00 NN - 3:00 PM", "Duration": "6", "Subject": "BSEM 24", "Proctor": "MR. JULIO CASTILLO JR.", "Subgroup": "BSE-M2-1", "Room": "TCC 8", "Activity Tag": "Lecture"},
+      {"Activity ID": "63", "Day": "Mon", "Start Time": "12:00 NN - 3:00 PM", "Duration": "6", "Subject": "BSEM 32", "Proctor": "MR. ANGELO M. CASTRO", "Subgroup": "BSE-M3-1", "Room": "TCC 4", "Activity Tag": "Lecture"},
+      {"Activity ID": "81", "Day": "Mon", "Start Time": "12:00 NN - 2:00 PM", "Duration": "4", "Subject": "BSEE 37", "Proctor": "MS. MARIECHELLE L. CORREO", "Subgroup": "BSE-E3-1", "Room": "TCC 6", "Activity Tag": "Lecture"},
+      {"Activity ID": "82", "Day": "Mon", "Start Time": "12:00 NN - 2:00 PM", "Duration": "4", "Subject": "BSEE 37", "Proctor": "MR. JETHRO DELOS ANGELES", "Subgroup": "BSE-E3-2", "Room": "TCC 12", "Activity Tag": "Lecture"},
+      {"Activity ID": "122", "Day": "Mon", "Start Time": "12:00 NN - 2:00 PM", "Duration": "4", "Subject": "EDUC 55", "Proctor": "MR. JOHN PAUL P. DE TORRES", "Subgroup": "BEE1-1", "Room": "TMA 104", "Activity Tag": "Lecture"},
+      {"Activity ID": "123", "Day": "Mon", "Start Time": "12:00 NN - 2:00 PM", "Duration": "4", "Subject": "EDUC 55", "Proctor": "MR. JEPRE DINGLASAN", "Subgroup": "BEE1-2", "Room": "TCC 26", "Activity Tag": "Lecture"},
+      {"Activity ID": "124", "Day": "Mon", "Start Time": "12:00 NN - 2:00 PM", "Duration": "4", "Subject": "EDUC 55", "Proctor": "MS. YOHANAH GUILLERMO", "Subgroup": "BEE1-3", "Room": "TCC 7", "Activity Tag": "Lecture"},
+      {"Activity ID": "125", "Day": "Mon", "Start Time": "12:00 NN - 2:00 PM", "Duration": "4", "Subject": "EDUC 55", "Proctor": "MR. KEVIN C. LUCILO", "Subgroup": "BEE1-4", "Room": "TCC 5", "Activity Tag": "Lecture"},
+      {"Activity ID": "126", "Day": "Mon", "Start Time": "12:00 NN - 2:00 PM", "Duration": "4", "Subject": "EDUC 55", "Proctor": "MR. MUHAIMIN P. MACAPUNDAG", "Subgroup": "BEE1-5", "Room": "TCC 22", "Activity Tag": "Lecture"},
+      {"Activity ID": "127", "Day": "Mon", "Start Time": "12:00 NN - 2:00 PM", "Duration": "4", "Subject": "EDUC 55", "Proctor": "MR. ANACLETO MARCELINO", "Subgroup": "BEE1-6", "Room": "TCC 3", "Activity Tag": "Lecture"},
+      {"Activity ID": "321", "Day": "Mon", "Start Time": "12:00 NN - 2:00 PM", "Duration": "4", "Subject": "GNED 09", "Proctor": "MS. MARY JOY ANGELIQUE R. MOJICA", "Subgroup": "BSBA3-1", "Room": "TMA 203", "Activity Tag": "Lecture"},
+      {"Activity ID": "322", "Day": "Mon", "Start Time": "12:00 NN - 2:00 PM", "Duration": "4", "Subject": "GNED 09", "Proctor": "MS. QUINCY MAE M. MONTEREY", "Subgroup": "BSBA3-2", "Room": "TMA 103", "Activity Tag": "Lecture"},
+      {"Activity ID": "323", "Day": "Mon", "Start Time": "12:00 NN - 2:00 PM", "Duration": "4", "Subject": "GNED 09", "Proctor": "MS. JENNIFER S. NERVAR", "Subgroup": "BSBA3-3", "Room": "TCC 18", "Activity Tag": "Lecture"},
+      {"Activity ID": "503", "Day": "Mon", "Start Time": "12:00 NN - 2:00 PM", "Duration": "4", "Subject": "ITEC 110", "Proctor": "MR. ANGELO T. OMIPING", "Subgroup": "BSIT4-1", "Room": "TCC 13", "Activity Tag": "Lecture"},
+      {"Activity ID": "504", "Day": "Mon", "Start Time": "12:00 NN - 2:00 PM", "Duration": "4", "Subject": "ITEC 110", "Proctor": "MR. JENICE G. ORPEZA", "Subgroup": "BSIT4-2", "Room": "TCC 30", "Activity Tag": "Lecture"},
+      {"Activity ID": "520", "Day": "Mon", "Start Time": "12:00 NN - 2:00 PM", "Duration": "4", "Subject": "ITEC 85", "Proctor": "MR. RICHARD ADRIAN KENN D. PARGAN", "Subgroup": "BSIT3-2", "Room": "TMA 105", "Activity Tag": "Lecture"},
+      {"Activity ID": "521", "Day": "Mon", "Start Time": "12:00 NN - 2:00 PM", "Duration": "4", "Subject": "ITEC 85", "Proctor": "MS. ROJELYN T. PEDIDA", "Subgroup": "BSIT3-3", "Room": "TCC 23", "Activity Tag": "Lecture"},
+      {"Activity ID": "522", "Day": "Mon", "Start Time": "12:00 NN - 2:00 PM", "Duration": "4", "Subject": "ITEC 85", "Proctor": "MR. JANOS P. RAPANUT", "Subgroup": "BSIT3-4", "Room": "TCC 17", "Activity Tag": "Lecture"},
+      {"Activity ID": "542", "Day": "Mon", "Start Time": "12:00 NN - 2:00 PM", "Duration": "4", "Subject": "DCIT 50", "Proctor": "MS. MAGELYN M. RIVERA", "Subgroup": "BSIT2-1", "Room": "TCC 15", "Activity Tag": "Lecture"},
+      {"Activity ID": "543", "Day": "Mon", "Start Time": "12:00 NN - 2:00 PM", "Duration": "4", "Subject": "DCIT 50", "Proctor": "MS. RICHELLE ROZOL", "Subgroup": "BSIT2-2", "Room": "TMA 101", "Activity Tag": "Lecture"},
+      {"Activity ID": "544", "Day": "Mon", "Start Time": "12:00 NN - 2:00 PM", "Duration": "4", "Subject": "DCIT 50", "Proctor": "MR. HYRAM ADRIENNE M. SALINAS", "Subgroup": "BSIT2-3", "Room": "TCC 29", "Activity Tag": "Lecture"},
+      {"Activity ID": "545", "Day": "Mon", "Start Time": "12:00 NN - 2:00 PM", "Duration": "4", "Subject": "DCIT 50", "Proctor": "MR. JULIUS ANGELO B. SARREAL", "Subgroup": "BSIT2-4", "Room": "TCC 1", "Activity Tag": "Lecture"},
+      {"Activity ID": "546", "Day": "Mon", "Start Time": "12:00 NN - 2:00 PM", "Duration": "4", "Subject": "DCIT 50", "Proctor": "MR. CRISOSTOMO M. SIBULO", "Subgroup": "BSIT2-5", "Room": "TCC 14", "Activity Tag": "Lecture"},
+      {"Activity ID": "547", "Day": "Mon", "Start Time": "12:00 NN - 2:00 PM", "Duration": "4", "Subject": "DCIT 50", "Proctor": "MR. JONVIC L. SINGCAY", "Subgroup": "BSIT2-6", "Room": "TCC 16", "Activity Tag": "Lecture"},
+      {"Activity ID": "555", "Day": "Mon", "Start Time": "12:00 NN - 2:00 PM", "Duration": "4", "Subject": "ITEC 85", "Proctor": "MR. RODERICK VILLACAMPA", "Subgroup": "BSIT3-1", "Room": "TCC 10", "Activity Tag": "Lecture"},
+      {"Activity ID": "25", "Day": "Mon", "2:00 - 4:00 PM": "2:00 - 4:00 PM", "Start Time": "2:00 - 4:00 PM", "Duration": "4", "Subject": "BEEd 32", "Proctor": "MR. AUDREY GERARD ADVINCULA", "Subgroup": "BEE3-1", "Room": "TCC 20", "Activity Tag": "Lecture"},
+      {"Activity ID": "26", "Day": "Mon", "Start Time": "2:00 - 4:00 PM", "Duration": "4", "Subject": "BEEd 32", "Proctor": "MS. LAARNI MHAE BUCOR", "Subgroup": "BEE3-2", "Room": "TCC 1", "Activity Tag": "Lecture"},
+      {"Activity ID": "182", "Day": "Mon", "Start Time": "2:00 - 4:00 PM", "Duration": "4", "Subject": "FITT 1", "Proctor": "MR. JOHN MELBERT BUEN", "Subgroup": "BSE-E1-1", "Room": "TMA 101", "Activity Tag": "Lecture"},
+      {"Activity ID": "183", "Day": "Mon", "Start Time": "2:00 - 4:00 PM", "Duration": "4", "Subject": "FITT 1", "Proctor": "MR. ANGELO M. CASTRO", "Subgroup": "BSE-E1-2", "Room": "TCC 25", "Activity Tag": "Lecture"},
+      {"Activity ID": "184", "Day": "Mon", "Start Time": "2:00 - 4:00 PM", "Duration": "4", "Subject": "FITT 1", "Proctor": "MS. MARIECHELLE L. CORREO", "Subgroup": "BSE-E1-3", "Room": "TCC 19", "Activity Tag": "Lecture"},
+      {"Activity ID": "185", "Day": "Mon", "Start Time": "2:00 - 4:00 PM", "Duration": "4", "Subject": "FITT 1", "Proctor": "MR. JETHRO DELOS ANGELES", "Subgroup": "BSE-E1-4", "Room": "TCC 10", "Activity Tag": "Lecture"},
+      {"Activity ID": "186", "Day": "Mon", "Start Time": "2:00 - 4:00 PM", "Duration": "4", "Subject": "FITT 1", "Proctor": "MR. JOHN PAUL P. DE TORRES", "Subgroup": "BSE-E1-5", "Room": "TCC 13", "Activity Tag": "Lecture"},
+      {"Activity ID": "187", "Day": "Mon", "Start Time": "2:00 - 4:00 PM", "Duration": "4", "Subject": "FITT 1", "Proctor": "MR. JEPRE DINGLASAN", "Subgroup": "BSE-E1-6", "Room": "TMA 204", "Activity Tag": "Lecture"},
+      {"Activity ID": "188", "Day": "Mon", "Start Time": "2:00 - 4:00 PM", "Duration": "4", "Subject": "FITT 1", "Proctor": "MS. YOHANAH GUILLERMO", "Subgroup": "BSE-M1-1", "Room": "TMA 201", "Activity Tag": "Lecture"},
+      {"Activity ID": "189", "Day": "Mon", "Start Time": "2:00 - 4:00 PM", "Duration": "4", "Subject": "FITT 1", "Proctor": "MR. KEVIN C. LUCILO", "Subgroup": "BSE-M1-2", "Room": "TCC 24", "Activity Tag": "Lecture"},
+      {"Activity ID": "202", "Day": "Mon", "Start Time": "2:00 - 4:00 PM", "Duration": "4", "Subject": "FITT 3", "Proctor": "MR. ANACLETO MARCELINO", "Subgroup": "BSBA2-1", "Room": "TMA 202", "Activity Tag": "Lecture"},
+      {"Activity ID": "203", "Day": "Mon", "Start Time": "2:00 - 4:00 PM", "Duration": "4", "Subject": "FITT 3", "Proctor": "MS. MARY JOY ANGELIQUE R. MOJICA", "Subgroup": "BSBA2-2", "Room": "TCC 11", "Activity Tag": "Lecture"},
+      {"Activity ID": "204", "Day": "Mon", "Start Time": "2:00 - 4:00 PM", "Duration": "4", "Subject": "FITT 3", "Proctor": "MS. QUINCY MAE M. MONTEREY", "Subgroup": "BSBA2-3", "Room": "TMA 105", "Activity Tag": "Lecture"},
+      {"Activity ID": "205", "Day": "Mon", "Start Time": "2:00 - 4:00 PM", "Duration": "4", "Subject": "FITT 3", "Proctor": "MS. JENNIFER S. NERVAR", "Subgroup": "BSBA2-4", "Room": "TMA 203", "Activity Tag": "Lecture"},
+      {"Activity ID": "206", "Day": "Mon", "Start Time": "2:00 - 4:00 PM", "Duration": "4", "Subject": "FITT 3", "Proctor": "MR. ANGELO T. OMIPING", "Subgroup": "BSBA2-5", "Room": "TCC 30", "Activity Tag": "Lecture"},
+      {"Activity ID": "218", "Day": "Mon", "Start Time": "2:00 - 4:00 PM", "Duration": "4", "Subject": "GNED 02", "Proctor": "MS. ROJELYN T. PEDIDA", "Subgroup": "BSIT1-1", "Room": "TCC 21", "Activity Tag": "Lecture"},
+      {"Activity ID": "219", "Day": "Mon", "Start Time": "2:00 - 4:00 PM", "Duration": "4", "Subject": "GNED 02", "Proctor": "MS. MAGELYN M. RIVERA", "Subgroup": "BSIT1-2", "Room": "TCC 23", "Activity Tag": "Lecture"},
+      {"Activity ID": "220", "Day": "Mon", "Start Time": "2:00 - 4:00 PM", "Duration": "4", "Subject": "GNED 02", "Proctor": "MS. RICHELLE ROZOL", "Subgroup": "BSIT1-3", "Room": "TCC 5", "Activity Tag": "Lecture"},
+      {"Activity ID": "221", "Day": "Mon", "Start Time": "2:00 - 4:00 PM", "Duration": "4", "Subject": "GNED 02", "Proctor": "MR. CRISOSTOMO M. SIBULO", "Subgroup": "BSIT1-4", "Room": "TCC 26", "Activity Tag": "Lecture"},
+      {"Activity ID": "222", "Day": "Mon", "Start Time": "2:00 - 4:00 PM", "Duration": "4", "Subject": "GNED 02", "Proctor": "MR. ANGELO T. OMIPING", "Subgroup": "BSIT1-5", "Room": "TCC 7", "Activity Tag": "Lecture"},
+      {"Activity ID": "223", "Day": "Mon", "Start Time": "2:00 - 4:00 PM", "Duration": "4", "Subject": "GNED 02", "Proctor": "MR. JULIUS ANGELO B. SARREAL", "Subgroup": "BSIT1-6", "Room": "TCC 9", "Activity Tag": "Lecture"},
+      {"Activity ID": "224", "Day": "Mon", "Start Time": "2:00 - 4:00 PM", "Duration": "4", "Subject": "GNED 02", "Proctor": "MS. MARY ANN L. ANONAS", "Subgroup": "BSIT1-7", "Room": "TCC 12", "Activity Tag": "Lecture"},
+      {"Activity ID": "225", "Day": "Mon", "Start Time": "2:00 - 4:00 PM", "Duration": "4", "Subject": "GNED 02", "Proctor": "MS. SHEERIE MHEL COLINA", "Subgroup": "BSIT1-8", "Room": "TCC 29", "Activity Tag": "Lecture"},
+      {"Activity ID": "277", "Day": "Mon", "Start Time": "2:00 - 4:00 PM", "Duration": "4", "Subject": "GNED 05", "Proctor": "MR. JEFFREY M. DELGADO", "Subgroup": "BSBA1-1", "Room": "TCC 27", "Activity Tag": "Lecture"},
+      {"Activity ID": "278", "Day": "Mon", "Start Time": "2:00 - 4:00 PM", "Duration": "4", "Subject": "GNED 05", "Proctor": "MS. MYLA JANE HENEGABUAS", "Subgroup": "BSBA1-2", "Room": "TCC 2", "Activity Tag": "Lecture"},
+      {"Activity ID": "279", "Day": "Mon", "Start Time": "2:00 - 4:00 PM", "Duration": "4", "Subject": "GNED 05", "Proctor": "MS. NOEMI A. PERIDA", "Subgroup": "BSBA1-3", "Room": "TCC 6", "Activity Tag": "Lecture"},
+      {"Activity ID": "280", "Day": "Mon", "Start Time": "2:00 - 4:00 PM", "Duration": "4", "Subject": "GNED 05", "Proctor": "MR. MARION ADAM S. PURUGGANAN", "Subgroup": "BSBA1-4", "Room": "TCC 28", "Activity Tag": "Lecture"},
+      {"Activity ID": "281", "Day": "Mon", "Start Time": "2:00 - 4:00 PM", "Duration": "4", "Subject": "GNED 05", "Proctor": "MS. JESSICA AVON C. QUEZADA", "Subgroup": "BSBA1-5", "Room": "TCC 14", "Activity Tag": "Lecture"},
+      {"Activity ID": "282", "Day": "Mon", "Start Time": "2:00 - 4:00 PM", "Duration": "4", "Subject": "GNED 05", "Proctor": "MS. GECILLE MARIE A. REYES", "Subgroup": "BSBA1-6", "Room": "TCC 22", "Activity Tag": "Lecture"},
+      {"Activity ID": "283", "Day": "Mon", "Start Time": "2:00 - 4:00 PM", "Duration": "4", "Subject": "GNED 05", "Proctor": "MS. MA. WOODELYN REYES", "Subgroup": "BSBA1-7", "Room": "TCC 3", "Activity Tag": "Lecture"},
+      {"Activity ID": "284", "Day": "Mon", "Start Time": "2:00 - 4:00 PM", "Duration": "4", "Subject": "GNED 05", "Proctor": "MR. JOSEPH O. SABAYBAY", "Subgroup": "BSBA1-8", "Room": "TMA 104", "Activity Tag": "Lecture"},
+      {"Activity ID": "526", "Day": "Mon", "Start Time": "2:00 - 4:00 PM", "Duration": "4", "Subject": "ITEC 90", "Proctor": "MS. MICAH M. SANCHEZ", "Subgroup": "BSIT3-4", "Room": "TCC 15", "Activity Tag": "Lecture"},
+      {"Activity ID": "556", "Day": "Mon", "Start Time": "2:00 - 4:00 PM", "Duration": "4", "Subject": "ITEC 90", "Proctor": "MS. JOYCE ERIKA S. SENARIS", "Subgroup": "BSIT3-1", "Room": "TCC 17", "Activity Tag": "Lecture"},
+      {"Activity ID": "557", "Day": "Mon", "Start Time": "2:00 - 4:00 PM", "Duration": "4", "Subject": "ITEC 90", "Proctor": "MS. ANGEL A. DUALES", "Subgroup": "BSIT3-2", "Room": "TCC 18", "Activity Tag": "Lecture"},
+      {"Activity ID": "558", "Day": "Mon", "Start Time": "2:00 - 4:00 PM", "Duration": "4", "Subject": "ITEC 90", "Proctor": "MR. JANOS P. RAPANUT", "Subgroup": "BSIT3-3", "Room": "TMA 103", "Activity Tag": "Lecture"},
+      {"Activity ID": "79", "Day": "Mon", "Start Time": "4:00 - 6:00 PM", "Duration": "4", "Subject": "BSEE 36", "Proctor": "MR. AUDREY GERARD ADVINCULA", "Subgroup": "BSE-E3-1", "Room": "TCC 12", "Activity Tag": "Lecture"},
+      {"Activity ID": "80", "Day": "Mon", "Start Time": "4:00 - 6:00 PM", "Duration": "4", "Subject": "BSEE 36", "Proctor": "MS. LAARNI MHAE BUCOR", "Subgroup": "BSE-E3-2", "Room": "TCC 18", "Activity Tag": "Lecture"},
+      {"Activity ID": "160", "Day": "Mon", "Start Time": "4:00 - 6:00 PM", "Duration": "4", "Subject": "EDUC 90", "Proctor": "MR. JOHN MELBERT BUEN", "Subgroup": "BEE2-1", "Room": "TMA 201", "Activity Tag": "Lecture"},
+      {"Activity ID": "161", "Day": "Mon", "Start Time": "4:00 - 6:00 PM", "Duration": "4", "Subject": "EDUC 90", "Proctor": "MR. ANGELO M. CASTRO", "Subgroup": "BEE2-2", "Room": "TCC 7", "Activity Tag": "Lecture"},
+      {"Activity ID": "162", "Day": "Mon", "Start Time": "4:00 - 6:00 PM", "Duration": "4", "Subject": "EDUC 90", "Proctor": "MS. MARIECHELLE L. CORREO", "Subgroup": "BEE2-3", "Room": "TMA 105", "Activity Tag": "Lecture"},
+      {"Activity ID": "163", "Day": "Mon", "Start Time": "4:00 - 6:00 PM", "Duration": "4", "Subject": "EDUC 90", "Proctor": "MR. FRANCE ANDRIE AÑASCO", "Subgroup": "BSE-E2-1", "Room": "TCC 20", "Activity Tag": "Lecture"},
+      {"Activity ID": "164", "Day": "Mon", "Start Time": "4:00 - 6:00 PM", "Duration": "4", "Subject": "EDUC 90", "Proctor": "MR. JOHN PAUL P. DE TORRES", "Subgroup": "BSE-E2-2", "Room": "TCC 21", "Activity Tag": "Lecture"},
+      {"Activity ID": "165", "Day": "Mon", "Start Time": "4:00 - 6:00 PM", "Duration": "4", "Subject": "EDUC 90", "Proctor": "MR. JEPRE DINGLASAN", "Subgroup": "BSE-E2-3", "Room": "TCC 22", "Activity Tag": "Lecture"},
+      {"Activity ID": "166", "Day": "Mon", "Start Time": "4:00 - 6:00 PM", "Duration": "4", "Subject": "EDUC 90", "Proctor": "MS. YOHANAH GUILLERMO", "Subgroup": "BSE-E2-4", "Room": "TCC 10", "Activity Tag": "Lecture"},
+      {"Activity ID": "167", "Day": "Mon", "Start Time": "4:00 - 6:00 PM", "Duration": "4", "Subject": "EDUC 90", "Proctor": "MR. KEVIN C. LUCILO", "Subgroup": "BSE-M2-1", "Room": "TCC 25", "Activity Tag": "Lecture"},
+      {"Activity ID": "168", "Day": "Mon", "Start Time": "4:00 - 6:00 PM", "Duration": "4", "Subject": "FITT 1", "Proctor": "MR. ANACLETO MARCELINO", "Subgroup": "BEE1-1", "Room": "TCC 14", "Activity Tag": "Lecture"},
+      {"Activity ID": "169", "Day": "Mon", "Start Time": "4:00 - 6:00 PM", "Duration": "4", "Subject": "FITT 1", "Proctor": "MS. MARY JOY ANGELIQUE R. MOJICA", "Subgroup": "BEE1-2", "Room": "TMA 103", "Activity Tag": "Lecture"},
+      {"Activity ID": "170", "Day": "Mon", "Start Time": "4:00 - 6:00 PM", "Duration": "4", "Subject": "FITT 1", "Proctor": "MS. QUINCY MAE M. MONTEREY", "Subgroup": "BEE1-3", "Room": "TCC 23", "Activity Tag": "Lecture"},
+      {"Activity ID": "171", "Day": "Mon", "Start Time": "4:00 - 6:00 PM", "Duration": "4", "Subject": "FITT 1", "Proctor": "MS. JENNIFER S. NERVAR", "Subgroup": "BEE1-4", "Room": "TCC 16", "Activity Tag": "Lecture"},
+      {"Activity ID": "172", "Day": "Mon", "Start Time": "4:00 - 6:00 PM", "Duration": "4", "Subject": "FITT 1", "Proctor": "MR. ANGELO T. OMIPING", "Subgroup": "BEE1-5", "Room": "TCC 17", "Activity Tag": "Lecture"},
+      {"Activity ID": "173", "Day": "Mon", "Start Time": "4:00 - 6:00 PM", "Duration": "4", "Subject": "FITT 1", "Proctor": "MS. ROJELYN T. PEDIDA", "Subgroup": "BEE1-6", "Room": "TCC 5", "Activity Tag": "Lecture"},
+      {"Activity ID": "191", "Day": "Mon", "Start Time": "4:00 - 6:00 PM", "Duration": "4", "Subject": "FITT 1", "Proctor": "MS. MAGELYN M. RIVERA", "Subgroup": "BSIT1-1", "Room": "TCC 11", "Activity Tag": "Lecture"},
+      {"Activity ID": "192", "Day": "Mon", "Start Time": "4:00 - 6:00 PM", "Duration": "4", "Subject": "FITT 1", "Proctor": "MS. RICHELLE ROZOL", "Subgroup": "BSIT1-2", "Room": "TCC 9", "Activity Tag": "Lecture"},
+      {"Activity ID": "193", "Day": "Mon", "Start Time": "4:00 - 6:00 PM", "Duration": "4", "Subject": "FITT 1", "Proctor": "MR. CRISOSTOMO M. SIBULO", "Subgroup": "BSIT1-3", "Room": "TCC 30", "Activity Tag": "Lecture"},
+      {"Activity ID": "194", "Day": "Mon", "Start Time": "4:00 - 6:00 PM", "Duration": "4", "Subject": "FITT 1", "Proctor": "MR. ANGELO T. OMIPING", "Subgroup": "BSIT1-4", "Room": "TCC 1", "Activity Tag": "Lecture"},
+      {"Activity ID": "195", "Day": "Mon", "Start Time": "4:00 - 6:00 PM", "Duration": "4", "Subject": "FITT 1", "Proctor": "MR. JULIUS ANGELO B. SARREAL", "Subgroup": "BSIT1-5", "Room": "TCC 24", "Activity Tag": "Lecture"},
+      {"Activity ID": "196", "Day": "Mon", "Start Time": "4:00 - 6:00 PM", "Duration": "4", "Subject": "FITT 1", "Proctor": "MS. MARY ANN L. ANONAS", "Subgroup": "BSIT1-6", "Room": "TCC 29", "Activity Tag": "Lecture"},
+      {"Activity ID": "197", "Day": "Mon", "Start Time": "4:00 - 6:00 PM", "Duration": "4", "Subject": "FITT 1", "Proctor": "MS. SHEERIE MHEL COLINA", "Subgroup": "BSIT1-7", "Room": "TCC 15", "Activity Tag": "Lecture"},
+      {"Activity ID": "198", "Day": "Mon", "Start Time": "4:00 - 6:00 PM", "Duration": "4", "Subject": "FITT 1", "Proctor": "MR. JEFFREY M. DELGADO", "Subgroup": "BSIT1-8", "Room": "TCC 8", "Activity Tag": "Lecture"},
+      {"Activity ID": "307", "Day": "Mon", "Start Time": "4:00 - 6:00 PM", "Duration": "4", "Subject": "GNED 07", "Proctor": "MS. MYLA JANE HENEGABUAS", "Subgroup": "BSIT2-1", "Room": "TMA 101", "Activity Tag": "Lecture"},
+      {"Activity ID": "308", "Day": "Mon", "Start Time": "4:00 - 6:00 PM", "Duration": "4", "Subject": "GNED 07", "Proctor": "MS. NOEMI A. PERIDA", "Subgroup": "BSIT2-2", "Room": "TCC 19", "Activity Tag": "Lecture"},
+      {"Activity ID": "309", "Day": "Mon", "Start Time": "4:00 - 6:00 PM", "Duration": "4", "Subject": "GNED 07", "Proctor": "MR. MARION ADAM S. PURUGGANAN", "Subgroup": "BSIT2-3", "Room": "TMA 204", "Activity Tag": "Lecture"},
+      {"Activity ID": "310", "Day": "Mon", "Start Time": "4:00 - 6:00 PM", "Duration": "4", "Subject": "GNED 07", "Proctor": "MS. JESSICA AVON C. QUEZADA", "Subgroup": "BSIT2-4", "Room": "TMA 104", "Activity Tag": "Lecture"},
+      {"Activity ID": "311", "Day": "Mon", "Start Time": "4:00 - 6:00 PM", "Duration": "4", "Subject": "GNED 07", "Proctor": "MS. GECILLE MARIE A. REYES", "Subgroup": "BSIT2-5", "Room": "TCC 3", "Activity Tag": "Lecture"},
+      {"Activity ID": "312", "Day": "Mon", "Start Time": "4:00 - 6:00 PM", "Duration": "4", "Subject": "GNED 07", "Proctor": "MS. MA. WOODELYN REYES", "Subgroup": "BSIT2-6", "Room": "TMA 203", "Activity Tag": "Lecture"},
+      {"Activity ID": "313", "Day": "Mon", "Start Time": "4:00 - 6:00 PM", "Duration": "4", "Subject": "GNED 07", "Proctor": "MR. JOSEPH O. SABAYBAY", "Subgroup": "BSBA1-1", "Room": "TCC 4", "Activity Tag": "Lecture"},
+      {"Activity ID": "314", "Day": "Mon", "Start Time": "4:00 - 6:00 PM", "Duration": "4", "Subject": "GNED 07", "Proctor": "MS. MICAH M. SANCHEZ", "Subgroup": "BSBA1-2", "Room": "TCC 27", "Activity Tag": "Lecture"},
+      {"Activity ID": "315", "Day": "Mon", "Start Time": "4:00 - 6:00 PM", "Duration": "4", "Subject": "GNED 07", "Proctor": "MS. JOYCE ERIKA S. SENARIS", "Subgroup": "BSBA1-3", "Room": "TCC 13", "Activity Tag": "Lecture"},
+      {"Activity ID": "316", "Day": "Mon", "Start Time": "4:00 - 6:00 PM", "Duration": "4", "Subject": "GNED 07", "Proctor": "MS. ANGEL A. DUALES", "Subgroup": "BSBA1-4", "Room": "TCC 28", "Activity Tag": "Lecture"},
+      {"Activity ID": "317", "Day": "Mon", "Start Time": "4:00 - 6:00 PM", "Duration": "4", "Subject": "GNED 07", "Proctor": "MR. JANOS P. RAPANUT", "Subgroup": "BSBA1-5", "Room": "TCC 6", "Activity Tag": "Lecture"},
+      {"Activity ID": "318", "Day": "Mon", "Start Time": "4:00 - 6:00 PM", "Duration": "4", "Subject": "GNED 07", "Proctor": "MS. ESTELITA A. VILLA", "Subgroup": "BSBA1-6", "Room": "TCC 2", "Activity Tag": "Lecture"},
+      {"Activity ID": "319", "Day": "Mon", "Start Time": "4:00 - 6:00 PM", "Duration": "4", "Subject": "GNED 07", "Proctor": "MR. ARBIESON F. BRAZA", "Subgroup": "BSBA1-7", "Room": "TMA 202", "Activity Tag": "Lecture"},
+      {"Activity ID": "320", "Day": "Mon", "Start Time": "4:00 - 6:00 PM", "Duration": "4", "Subject": "GNED 07", "Proctor": "MS. JHOLLIE ANNE D. LOPEZ", "Subgroup": "BSBA1-8", "Room": "TCC 26", "Activity Tag": "Lecture"},
+      {"Activity ID": "137", "Day": "Mon", "Start Time": "6:00 - 8:00 PM", "Duration": "4", "Subject": "EDUC 60", "Proctor": "MR. AUDREY GERARD ADVINCULA", "Subgroup": "BEE1-1", "Room": "TMA 201", "Activity Tag": "Lecture"},
+      {"Activity ID": "138", "Day": "Mon", "Start Time": "6:00 - 8:00 PM", "Duration": "4", "Subject": "EDUC 60", "Proctor": "MS. LAARNI MHAE BUCOR", "Subgroup": "BEE1-2", "Room": "TCC 2", "Activity Tag": "Lecture"},
+      {"Activity ID": "139", "Day": "Mon", "Start Time": "6:00 - 8:00 PM", "Duration": "4", "Subject": "EDUC 60", "Proctor": "MR. CHRISTIAN JOY SEBASTIAN", "Subgroup": "BEE1-3", "Room": "TCC 21", "Activity Tag": "Lecture"},
+      {"Activity ID": "140", "Day": "Mon", "Start Time": "6:00 - 8:00 PM", "Duration": "4", "Subject": "EDUC 60", "Proctor": "MR. CRISOSTOMO M. SIBULO", "Subgroup": "BEE1-4", "Room": "TCC 6", "Activity Tag": "Lecture"},
+      {"Activity ID": "141", "Day": "Mon", "Start Time": "6:00 - 8:00 PM", "Duration": "4", "Subject": "EDUC 60", "Proctor": "MS. MARIECHELLE L. CORREO", "Subgroup": "BEE1-5", "Room": "TMA 103", "Activity Tag": "Lecture"},
+      {"Activity ID": "142", "Day": "Mon", "Start Time": "6:00 - 8:00 PM", "Duration": "4", "Subject": "EDUC 60", "Proctor": "MR. FRANCE ANDRIE AÑASCO", "Subgroup": "BEE1-6", "Room": "TCC 4", "Activity Tag": "Lecture"},
+      {"Activity ID": "152", "Day": "Mon", "Start Time": "6:00 - 8:00 PM", "Duration": "4", "Subject": "EDUC 75", "Proctor": "MR. JOHN PAUL P. DE TORRES", "Subgroup": "BEE2-1", "Room": "TMA 204", "Activity Tag": "Lecture"},
+      {"Activity ID": "153", "Day": "Mon", "Start Time": "6:00 - 8:00 PM", "Duration": "4", "Subject": "EDUC 75", "Proctor": "MR. JEPRE DINGLASAN", "Subgroup": "BEE2-2", "Room": "TMA 105", "Activity Tag": "Lecture"},
+      {"Activity ID": "154", "Day": "Mon", "Start Time": "6:00 - 8:00 PM", "Duration": "4", "Subject": "EDUC 75", "Proctor": "MS. YOHANAH GUILLERMO", "Subgroup": "BEE2-3", "Room": "TCC 17", "Activity Tag": "Lecture"},
+      {"Activity ID": "155", "Day": "Mon", "Start Time": "6:00 - 8:00 PM", "Duration": "4", "Subject": "EDUC 75", "Proctor": "MR. KEVIN C. LUCILO", "Subgroup": "BSE-E2-1", "Room": "TCC 18", "Activity Tag": "Lecture"},
+      {"Activity ID": "156", "Day": "Mon", "Start Time": "6:00 - 8:00 PM", "Duration": "4", "Subject": "EDUC 75", "Proctor": "MR. ANACLETO MARCELINO", "Subgroup": "BSE-E2-2", "Room": "TCC 13", "Activity Tag": "Lecture"},
+      {"Activity ID": "157", "Day": "Mon", "Start Time": "6:00 - 8:00 PM", "Duration": "4", "Subject": "EDUC 75", "Proctor": "MS. MARY JOY ANGELIQUE R. MOJICA", "Subgroup": "BSE-E2-3", "Room": "TMA 104", "Activity Tag": "Lecture"},
+      {"Activity ID": "158", "Day": "Mon", "Start Time": "6:00 - 8:00 PM", "Duration": "4", "Subject": "EDUC 75", "Proctor": "MS. QUINCY MAE M. MONTEREY", "Subgroup": "BSE-E2-4", "Room": "TCC 29", "Activity Tag": "Lecture"},
+      {"Activity ID": "159", "Day": "Mon", "Start Time": "6:00 - 8:00 PM", "Duration": "4", "Subject": "EDUC 75", "Proctor": "MS. JENNIFER S. NERVAR", "Subgroup": "BSE-M2-1", "Room": "TCC 14", "Activity Tag": "Lecture"},
+      {"Activity ID": "212", "Day": "Mon", "Start Time": "6:00 - 8:00 PM", "Duration": "4", "Subject": "FITT 3", "Proctor": "MR. ANGELO T. OMIPING", "Subgroup": "BSIT2-1", "Room": "TCC 19", "Activity Tag": "Lecture"},
+      {"Activity ID": "213", "Day": "Mon", "Start Time": "6:00 - 8:00 PM", "Duration": "4", "Subject": "FITT 3", "Proctor": "MS. ROJELYN T. PEDIDA", "Subgroup": "BSIT2-2", "Room": "TMA 202", "Activity Tag": "Lecture"},
+      {"Activity ID": "214", "Day": "Mon", "Start Time": "6:00 - 8:00 PM", "Duration": "4", "Subject": "FITT 3", "Proctor": "MS. MAGELYN M. RIVERA", "Subgroup": "BSIT2-3", "Room": "TCC 3", "Activity Tag": "Lecture"},
+      {"Activity ID": "215", "Day": "Mon", "Start Time": "6:00 - 8:00 PM", "Duration": "4", "Subject": "FITT 3", "Proctor": "MS. RICHELLE ROZOL", "Subgroup": "BSIT2-4", "Room": "TCC 24", "Activity Tag": "Lecture"},
+      {"Activity ID": "216", "Day": "Mon", "Start Time": "6:00 - 8:00 PM", "Duration": "4", "Subject": "FITT 3", "Proctor": "MR. CRISOSTOMO M. SIBULO", "Subgroup": "BSIT2-5", "Room": "TCC 8", "Activity Tag": "Lecture"},
+      {"Activity ID": "217", "Day": "Mon", "Start Time": "6:00 - 8:00 PM", "Duration": "4", "Subject": "FITT 3", "Proctor": "MR. ANGELO T. OMIPING", "Subgroup": "BSIT2-6", "Room": "TCC 22", "Activity Tag": "Lecture"},
+      {"Activity ID": "349", "Day": "Mon", "Start Time": "6:00 - 8:00 PM", "Duration": "4", "Subject": "GNED 11", "Proctor": "MR. JULIUS ANGELO B. SARREAL", "Subgroup": "BSE-E1-1", "Room": "TCC 23", "Activity Tag": "Lecture"},
+      {"Activity ID": "350", "Day": "Mon", "Start Time": "6:00 - 8:00 PM", "Duration": "4", "Subject": "GNED 11", "Proctor": "MS. MARY ANN L. ANONAS", "Subgroup": "BSE-E1-2", "Room": "TCC 5", "Activity Tag": "Lecture"},
+      {"Activity ID": "351", "Day": "Mon", "Start Time": "6:00 - 8:00 PM", "Duration": "4", "Subject": "GNED 11", "Proctor": "MS. SHEERIE MHEL COLINA", "Subgroup": "BSE-E1-3", "Room": "TCC 9", "Activity Tag": "Lecture"},
+      {"Activity ID": "352", "Day": "Mon", "Start Time": "6:00 - 8:00 PM", "Duration": "4", "Subject": "GNED 11", "Proctor": "MR. JEFFREY M. DELGADO", "Subgroup": "BSE-E1-4", "Room": "TCC 15", "Activity Tag": "Lecture"},
+      {"Activity ID": "353", "Day": "Mon", "Start Time": "6:00 - 8:00 PM", "Duration": "4", "Subject": "GNED 11", "Proctor": "MS. MYLA JANE HENEGABUAS", "Subgroup": "BSE-E1-5", "Room": "TCC 30", "Activity Tag": "Lecture"},
+      {"Activity ID": "354", "Day": "Mon", "Start Time": "6:00 - 8:00 PM", "Duration": "4", "Subject": "GNED 11", "Proctor": "MS. NOEMI A. PERIDA", "Subgroup": "BSE-E1-6", "Room": "TCC 12", "Activity Tag": "Lecture"},
+      {"Activity ID": "355", "Day": "Mon", "Start Time": "6:00 - 8:00 PM", "Duration": "4", "Subject": "GNED 11", "Proctor": "MR. MARION ADAM S. PURUGGANAN", "Subgroup": "BSE-M1-1", "Room": "TCC 7", "Activity Tag": "Lecture"},
+      {"Activity ID": "356", "Day": "Mon", "Start Time": "6:00 - 8:00 PM", "Duration": "4", "Subject": "GNED 11", "Proctor": "MS. JESSICA AVON C. QUEZADA", "Subgroup": "BSE-M1-2", "Room": "TCC 26", "Activity Tag": "Lecture"},
+      {"Activity ID": "382", "Day": "Mon", "Start Time": "6:00 - 8:00 PM", "Duration": "4", "Subject": "MKTG 101", "Proctor": "MS. GECILLE MARIE A. REYES", "Subgroup": "BSBA3-1", "Room": "TCC 16", "Activity Tag": "Lecture"},
+      {"Activity ID": "383", "Day": "Mon", "Start Time": "6:00 - 8:00 PM", "Duration": "4", "Subject": "MKTG 101", "Proctor": "MS. MA. WOODELYN REYES", "Subgroup": "BSBA3-2", "Room": "TMA 203", "Activity Tag": "Lecture"},
+      {"Activity ID": "384", "Day": "Mon", "Start Time": "6:00 - 8:00 PM", "Duration": "4", "Subject": "MKTG 101", "Proctor": "MR. JOSEPH O. SABAYBAY", "Subgroup": "BSBA3-3", "Room": "TCC 28", "Activity Tag": "Lecture"},
+      {"Activity ID": "385", "Day": "Mon", "Start Time": "6:00 - 8:00 PM", "Duration": "4", "Subject": "MKTG 50", "Proctor": "MS. MICAH M. SANCHEZ", "Subgroup": "BSBA2-1", "Room": "TMA 101", "Activity Tag": "Lecture"},
+      {"Activity ID": "386", "Day": "Mon", "Start Time": "6:00 - 8:00 PM", "Duration": "4", "Subject": "MKTG 50", "Proctor": "MS. JOYCE ERIKA S. SENARIS", "Subgroup": "BSBA2-2", "Room": "TCC 10", "Activity Tag": "Lecture"},
+      {"Activity ID": "387", "Day": "Mon", "Start Time": "6:00 - 8:00 PM", "Duration": "4", "Subject": "MKTG 50", "Proctor": "MS. ANGEL A. DUALES", "Subgroup": "BSBA2-3", "Room": "TCC 11", "Activity Tag": "Lecture"},
+      {"Activity ID": "388", "Day": "Mon", "Start Time": "6:00 - 8:00 PM", "Duration": "4", "Subject": "MKTG 50", "Proctor": "MR. JANOS P. RAPANUT", "Subgroup": "BSBA2-4", "Room": "TCC 27", "Activity Tag": "Lecture"},
+      {"Activity ID": "389", "Day": "Mon", "Start Time": "6:00 - 8:00 PM", "Duration": "4", "Subject": "MKTG 50", "Proctor": "MR. JETHRO DELOS ANGELES", "Subgroup": "BSBA2-5", "Room": "TCC 25", "Activity Tag": "Lecture"},
+      {"Activity ID": "390", "Day": "Mon", "Start Time": "6:00 - 8:00 PM", "Duration": "4", "Subject": "MKTG 50", "Proctor": "MR. ARBIESON F. BRAZA", "Subgroup": "BSBA2-Irreg1", "Room": "TCC 20", "Activity Tag": "Lecture"},
+      {"Activity ID": "391", "Day": "Mon", "Start Time": "6:00 - 8:00 PM", "Duration": "4", "Subject": "MKTG 50", "Proctor": "MS. JOHANNA FAYE TRIA", "Subgroup": "BSBA2-Irreg2", "Room": "TCC 1", "Activity Tag": "Lecture"},
+      {"Activity ID": "23", "Day": "Tue", "Start Time": "08:00 - 10:00 AM", "Duration": "4", "Subject": "BEEd 31", "Proctor": "MR. JOHN MELBERT BUEN", "Subgroup": "BEE3-1", "Room": "TMA 203", "Activity Tag": "Lecture"},
+      {"Activity ID": "24", "Day": "Tue", "Start Time": "08:00 - 10:00 AM", "Duration": "4", "Subject": "BEEd 31", "Proctor": "MR. AUDREY GERARD ADVINCULA", "Subgroup": "BEE3-2", "Room": "TMA 201", "Activity Tag": "Lecture"},
+      {"Activity ID": "493", "Day": "Tue", "Start Time": "08:00 - 10:00 AM", "Duration": "4", "Subject": "DCIT 26", "Proctor": "MR. EFREN G. PEÑAFLORIDA JR.", "Subgroup": "BSIT3-1", "Room": "TMA 204", "Activity Tag": "Lecture"},
+      {"Activity ID": "494", "Day": "Tue", "Start Time": "08:00 - 10:00 AM", "Duration": "4", "Subject": "DCIT 26", "Proctor": "MR. ANGELO T. OMIPING", "Subgroup": "BSIT3-2", "Room": "TMA 105", "Activity Tag": "Lecture"},
+      {"Activity ID": "495", "Day": "Tue", "Start Time": "08:00 - 10:00 AM", "Duration": "4", "Subject": "DCIT 26", "Proctor": "MR. JOHN MHIKE JOSOL", "Subgroup": "BSIT3-3", "Room": "TMA 104", "Activity Tag": "Lecture"},
+      {"Activity ID": "496", "Day": "Tue", "Start Time": "08:00 - 10:00 AM", "Duration": "4", "Subject": "DCIT 26", "Proctor": "MS. MYLA JANE HENEGABUAS", "Subgroup": "BSIT3-4", "Room": "TMA 202", "Activity Tag": "Lecture"},
+      {"Activity ID": "505", "Day": "Tue", "Start Time": "08:00 - 10:00 AM", "Duration": "4", "Subject": "ITEC 111", "Proctor": "MR. JULIO CASTILLO JR.", "Subgroup": "BSIT4-1", "Room": "TMA 101", "Activity Tag": "Lecture"},
+      {"Activity ID": "506", "Day": "Tue", "Start Time": "08:00 - 10:00 AM", "Duration": "4", "Subject": "ITEC 111", "Proctor": "MR. RICHARD ADRIAN KENN D. PARGAN", "Subgroup": "BSIT4-2", "Room": "TMA 103", "Activity Tag": "Lecture"},
+      {"Activity ID": "232", "Day": "Tue", "Start Time": "10:00 AM - 1:00 PM", "Duration": "6", "Subject": "GNED 03", "Proctor": "MR. ANGELO M. CASTRO", "Subgroup": "BSBA1-1", "Room": "TMA 104", "Activity Tag": "Lecture"},
+      {"Activity ID": "233", "Day": "Tue", "Start Time": "10:00 AM - 1:00 PM", "Duration": "6", "Subject": "GNED 03", "Proctor": "MR. JOHN PAUL P. DE TORRES", "Subgroup": "BSBA1-2", "Room": "TMA 101", "Activity Tag": "Lecture"},
+      {"Activity ID": "234", "Day": "Tue", "Start Time": "10:00 AM - 1:00 PM", "Duration": "6", "Subject": "GNED 03", "Proctor": "MR. JULIUS ANGELO B. SARREAL", "Subgroup": "BSBA1-3", "Room": "TMA 201", "Activity Tag": "Lecture"},
+      {"Activity ID": "235", "Day": "Tue", "Start Time": "10:00 AM - 1:00 PM", "Duration": "6", "Subject": "GNED 03", "Proctor": "MR. KEVIN C. LUCILO", "Subgroup": "BSBA1-4", "Room": "TMA 204", "Activity Tag": "Lecture"},
+      {"Activity ID": "236", "Day": "Tue", "Start Time": "10:00 AM - 1:00 PM", "Duration": "6", "Subject": "GNED 03", "Proctor": "MR. MUHAIMIN P. MACAPUNDAG", "Subgroup": "BSBA1-5", "Room": "TMA 103", "Activity Tag": "Lecture"},
+      {"Activity ID": "237", "Day": "Tue", "Start Time": "10:00 AM - 1:00 PM", "Duration": "6", "Subject": "GNED 03", "Proctor": "MR. RODERICK VILLACAMPA", "Subgroup": "BSBA1-6", "Room": "TMA 203", "Activity Tag": "Lecture"},
+      {"Activity ID": "238", "Day": "Tue", "Start Time": "10:00 AM - 1:00 PM", "Duration": "6", "Subject": "GNED 03", "Proctor": "MS. SHEERIE MHEL COLINA", "Subgroup": "BSBA1-7", "Room": "TMA 202", "Activity Tag": "Lecture"},
+      {"Activity ID": "239", "Day": "Tue", "Start Time": "10:00 AM - 1:00 PM", "Duration": "6", "Subject": "GNED 03", "Proctor": "MR. KLARENCE BAPTISTA", "Subgroup": "BSBA1-8", "Room": "TMA 105", "Activity Tag": "Lecture"},
+      {"Activity ID": "77", "Day": "Tue", "Start Time": "1:00 - 3:00 PM", "Duration": "4", "Subject": "BSEE 29", "Proctor": "MR. AUDREY GERARD ADVINCULA", "Subgroup": "BSE-E3-1", "Room": "TMA 104", "Activity Tag": "Lecture"},
+      {"Activity ID": "78", "Day": "Tue", "Start Time": "1:00 - 3:00 PM", "Duration": "4", "Subject": "BSEE 29", "Proctor": "MR. FRANCE ANDRIE AÑASCO", "Subgroup": "BSE-E3-2", "Room": "TMA 201", "Activity Tag": "Lecture"},
+      {"Activity ID": "376", "Day": "Tue", "Start Time": "1:00 - 3:00 PM", "Duration": "4", "Subject": "GNED 14", "Proctor": "MR. KLARENCE BAPTISTA", "Subgroup": "BSIT2-1", "Room": "TMA 103", "Activity Tag": "Lecture"},
+      {"Activity ID": "377", "Day": "Tue", "Start Time": "1:00 - 3:00 PM", "Duration": "4", "Subject": "GNED 14", "Proctor": "MS. LAARNI MHAE BUCOR", "Subgroup": "BSIT2-2", "Room": "TMA 204", "Activity Tag": "Lecture"},
+      {"Activity ID": "378", "Day": "Tue", "Start Time": "1:00 - 3:00 PM", "Duration": "4", "Subject": "GNED 14", "Proctor": "MR. JOHN MELBERT BUEN", "Subgroup": "BSIT2-3", "Room": "TMA 101", "Activity Tag": "Lecture"},
+      {"Activity ID": "379", "Day": "Tue", "Start Time": "1:00 - 3:00 PM", "Duration": "4", "Subject": "GNED 14", "Proctor": "MR. ARBIESON F. BRAZA", "Subgroup": "BSIT2-4", "Room": "TMA 105", "Activity Tag": "Lecture"},
+      {"Activity ID": "380", "Day": "Tue", "Start Time": "1:00 - 3:00 PM", "Duration": "4", "Subject": "GNED 14", "Proctor": "MR. ANGELO M. CASTRO", "Subgroup": "BSIT2-5", "Room": "TMA 203", "Activity Tag": "Lecture"},
+      {"Activity ID": "381", "Day": "Tue", "Start Time": "1:00 - 3:00 PM", "Duration": "4", "Subject": "GNED 14", "Proctor": "MS. SHEERIE MHEL COLINA", "Subgroup": "BSIT2-6", "Room": "TMA 202", "Activity Tag": "Lecture"},
+      {"Activity ID": "512", "Day": "Tue", "Start Time": "3:00 - 5:00 PM", "Duration": "4", "Subject": "ITEC 55", "Proctor": "MR. MARION ADAM S. PURUGGANAN", "Subgroup": "BSIT2-4", "Room": "TMA 104", "Activity Tag": "Lecture"},
+      {"Activity ID": "513", "Day": "Tue", "Start Time": "3:00 - 5:00 PM", "Duration": "4", "Subject": "ITEC 55", "Proctor": "MR. JULIUS ANGELO B. SARREAL", "Subgroup": "BSIT2-5", "Room": "TMA 203", "Activity Tag": "Lecture"},
+      {"Activity ID": "514", "Day": "Tue", "Start Time": "3:00 - 5:00 PM", "Duration": "4", "Subject": "ITEC 55", "Proctor": "MR. RICHARD ADRIAN KENN D. PARGAN", "Subgroup": "BSIT2-6", "Room": "TMA 105", "Activity Tag": "Lecture"},
+      {"Activity ID": "548", "Day": "Tue", "Start Time": "3:00 - 5:00 PM", "Duration": "4", "Subject": "ITEC 55", "Proctor": "MR. CRISOSTOMO M. SIBULO", "Subgroup": "BSIT2-1", "Room": "TMA 202", "Activity Tag": "Lecture"},
+      {"Activity ID": "549", "Day": "Tue", "Start Time": "3:00 - 5:00 PM", "Duration": "4", "Subject": "ITEC 55", "Proctor": "MR. LUIS VIDAL JR.", "Subgroup": "BSIT2-2", "Room": "TMA 103", "Activity Tag": "Lecture"},
+      {"Activity ID": "550", "Day": "Tue", "Start Time": "3:00 - 5:00 PM", "Duration": "4", "Subject": "ITEC 55", "Proctor": "MR. RODERICK VILLACAMPA", "Subgroup": "BSIT2-3", "Room": "TMA 204", "Activity Tag": "Lecture"},
+      {"Activity ID": "29", "Day": "Tue", "Start Time": "4:00 - 6:00 PM", "Duration": "4", "Subject": "BEEd 34", "Proctor": "MS. MICAH M. SANCHEZ", "Subgroup": "BEE3-1", "Room": "TMA 101", "Activity Tag": "Lecture"},
+      {"Activity ID": "30", "Day": "Tue", "Start Time": "4:00 - 6:00 PM", "Duration": "4", "Subject": "BEEd 34", "Proctor": "MR. RONNEL JUL M. SEBASTIAN", "Subgroup": "BEE3-2", "Room": "TMA 201", "Activity Tag": "Lecture"},
+      {"Activity ID": "75", "Day": "Tue", "Start Time": "6:00 - 8:00 PM", "Duration": "4", "Subject": "BSEE 28", "Proctor": "MR. ANGELO M. CASTRO", "Subgroup": "BSE-E3-1", "Room": "TMA 103", "Activity Tag": "Lecture"},
+      {"Activity ID": "76", "Day": "Tue", "Start Time": "6:00 - 8:00 PM", "Duration": "4", "Subject": "BSEE 28", "Proctor": "MR. JETHRO DELOS ANGELES", "Subgroup": "BSE-E3-2", "Room": "TMA 203", "Activity Tag": "Lecture"},
+      {"Activity ID": "536", "Day": "Tue", "Start Time": "6:00 - 8:00 PM", "Duration": "4", "Subject": "DCIT 24", "Proctor": "MR. JEPRE DINGLASAN", "Subgroup": "BSIT2-1", "Room": "TMA 204", "Activity Tag": "Lecture"},
+      {"Activity ID": "537", "Day": "Tue", "Start Time": "6:00 - 8:00 PM", "Duration": "4", "Subject": "DCIT 24", "Proctor": "MS. YOHANAH GUILLERMO", "Subgroup": "BSIT2-2", "Room": "TMA 201", "Activity Tag": "Lecture"},
+      {"Activity ID": "538", "Day": "Tue", "Start Time": "6:00 - 8:00 PM", "Duration": "4", "Subject": "DCIT 24", "Proctor": "MR. HYRAM ADRIENNE M. SALINAS", "Subgroup": "BSIT2-3", "Room": "TMA 101", "Activity Tag": "Lecture"},
+      {"Activity ID": "539", "Day": "Tue", "Start Time": "6:00 - 8:00 PM", "Duration": "4", "Subject": "DCIT 24", "Proctor": "MR. CRISOSTOMO M. SIBULO", "Subgroup": "BSIT2-4", "Room": "TMA 105", "Activity Tag": "Lecture"},
+      {"Activity ID": "540", "Day": "Tue", "Start Time": "6:00 - 8:00 PM", "Duration": "4", "Subject": "DCIT 24", "Proctor": "MS. JENILYN TANGALIN", "Subgroup": "BSIT2-5", "Room": "TMA 202", "Activity Tag": "Lecture"},
+      {"Activity ID": "541", "Day": "Tue", "Start Time": "6:00 - 8:00 PM", "Duration": "4", "Subject": "DCIT 24", "Proctor": "MR. MARLOU M. TANGALIN", "Subgroup": "BSIT2-6", "Room": "TMA 104", "Activity Tag": "Lecture"},
+      {"Activity ID": "58", "Day": "Wed", "Start Time": "7:00 - 10:00 AM", "Duration": "6", "Subject": "BSEM 23", "Proctor": "MR. FRANCE ANDRIE AÑASCO", "Subgroup": "BSE-M2-1", "Room": "TMA 201", "Activity Tag": "Lecture"},
+      {"Activity ID": "62", "Day": "Wed", "Start Time": "7:00 - 10:00 AM", "Duration": "6", "Subject": "BSEM 27", "Proctor": "MS. AUDREYSON H. BORILLA", "Subgroup": "BSE-M3-1", "Room": "TMA 202", "Activity Tag": "Lecture"},
+      {"Activity ID": "226", "Day": "Wed", "Start Time": "7:00 - 10:00 AM", "Duration": "6", "Subject": "GNED 03", "Proctor": "MS. MYLA JANE HENEGABUAS", "Subgroup": "BEE1-1", "Room": "TMA 204", "Activity Tag": "Lecture"},
+      {"Activity ID": "227", "Day": "Wed", "Start Time": "7:00 - 10:00 AM", "Duration": "6", "Subject": "GNED 03", "Proctor": "MR. KEVIN C. LUCILO", "Subgroup": "BEE1-2", "Room": "TMA 105", "Activity Tag": "Lecture"},
+      {"Activity ID": "228", "Day": "Wed", "Start Time": "7:00 - 10:00 AM", "Duration": "6", "Subject": "GNED 03", "Proctor": "MR. MUHAIMIN P. MACAPUNDAG", "Subgroup": "BEE1-3", "Room": "TMA 101", "Activity Tag": "Lecture"},
+      {"Activity ID": "229", "Day": "Wed", "Start Time": "7:00 - 10:00 AM", "Duration": "6", "Subject": "GNED 03", "Proctor": "MR. EFREN G. PEÑAFLORIDA JR.", "Subgroup": "BEE1-4", "Room": "TMA 203", "Activity Tag": "Lecture"},
+      {"Activity ID": "230", "Day": "Wed", "Start Time": "7:00 - 10:00 AM", "Duration": "6", "Subject": "GNED 03", "Proctor": "MR. MARION ADAM S. PURUGGANAN", "Subgroup": "BEE1-5", "Room": "TMA 104", "Activity Tag": "Lecture"},
+      {"Activity ID": "231", "Day": "Wed", "Start Time": "7:00 - 10:00 AM", "Duration": "6", "Subject": "GNED 03", "Proctor": "MR. ANGELO M. CASTRO", "Subgroup": "BEE1-6", "Room": "TMA 103", "Activity Tag": "Lecture"},
+      {"Activity ID": "294", "Day": "Wed", "Start Time": "10:00 AM - 12:00 NN", "Duration": "4", "Subject": "GNED 05", "Proctor": "MR. ANGELO T. OMIPING", "Subgroup": "BSIT1-1", "Room": "TMA 104", "Activity Tag": "Lecture"},
+      {"Activity ID": "295", "Day": "Wed", "Start Time": "10:00 AM - 12:00 NN", "Duration": "4", "Subject": "GNED 05", "Proctor": "MR. AUDREY GERARD ADVINCULA", "Subgroup": "BSIT1-2", "Room": "TMA 204", "Activity Tag": "Lecture"},
+      {"Activity ID": "296", "Day": "Wed", "Start Time": "10:00 AM - 12:00 NN", "Duration": "4", "Subject": "GNED 05", "Proctor": "MR. JENICE G. ORPEZA", "Subgroup": "BSIT1-3", "Room": "TMA 103", "Activity Tag": "Lecture"},
+      {"Activity ID": "297", "Day": "Wed", "Start Time": "10:00 AM - 12:00 NN", "Duration": "4", "Subject": "GNED 05", "Proctor": "MR. JOHN MELBERT BUEN", "Subgroup": "BSIT1-4", "Room": "TMA 202", "Activity Tag": "Lecture"},
+      {"Activity ID": "298", "Day": "Wed", "Start Time": "10:00 AM - 12:00 NN", "Duration": "4", "Subject": "GNED 05", "Proctor": "MR. JOHN PAUL P. DE TORRES", "Subgroup": "BSIT1-5", "Room": "TMA 101", "Activity Tag": "Lecture"},
+      {"Activity ID": "299", "Day": "Wed", "Start Time": "10:00 AM - 12:00 NN", "Duration": "4", "Subject": "GNED 05", "Proctor": "MR. JULIO CASTILLO JR.", "Subgroup": "BSIT1-6", "Room": "TMA 201", "Activity Tag": "Lecture"},
+      {"Activity ID": "300", "Day": "Wed", "Start Time": "10:00 AM - 12:00 NN", "Duration": "4", "Subject": "GNED 05", "Proctor": "MR. JULIUS ANGELO B. SARREAL", "Subgroup": "BSIT1-7", "Room": "TMA 203", "Activity Tag": "Lecture"},
+      {"Activity ID": "301", "Day": "Wed", "Start Time": "10:00 AM - 12:00 NN", "Duration": "4", "Subject": "GNED 05", "Proctor": "MS. QUINCY MAE M. MONTEREY", "Subgroup": "BSIT1-8", "Room": "TMA 105", "Activity Tag": "Lecture"},
+      {"Activity ID": "61", "Day": "Wed", "Start Time": "12:00 NN - 3:00 PM", "Duration": "6", "Subject": "BSEM 26", "Proctor": "MS. MA. WOODELYN REYES", "Subgroup": "BSE-M2-1", "Room": "TMA 105", "Activity Tag": "Lecture"},
+      {"Activity ID": "66", "Day": "Wed", "Start Time": "12:00 NN - 3:00 PM", "Duration": "6", "Subject": "BSEM 39", "Proctor": "MS. MARY JOY ANGELIQUE R. MOJICA", "Subgroup": "BSE-M3-1", "Room": "TMA 104", "Activity Tag": "Lecture"},
+      {"Activity ID": "274", "Day": "Wed", "Start Time": "12:00 NN - 2:00 PM", "Duration": "4", "Subject": "GNED 05", "Proctor": "MR. RODERICK VILLACAMPA", "Subgroup": "BEE1-4", "Room": "TMA 101", "Activity Tag": "Lecture"},
+      {"Activity ID": "275", "Day": "Wed", "Start Time": "12:00 NN - 2:00 PM", "Duration": "4", "Subject": "GNED 05", "Proctor": "MS. JESSICA AVON C. QUEZADA", "Subgroup": "BEE1-5", "Room": "TMA 204", "Activity Tag": "Lecture"},
+      {"Activity ID": "276", "Day": "Wed", "Start Time": "12:00 NN - 2:00 PM", "Duration": "4", "Subject": "GNED 05", "Proctor": "MR. RONNEL JUL M. SEBASTIAN", "Subgroup": "BEE1-6", "Room": "TMA 203", "Activity Tag": "Lecture"},
+      {"Activity ID": "476", "Day": "Wed", "Start Time": "12:00 NN - 2:00 PM", "Duration": "4", "Subject": "GNED 05", "Proctor": "MR. CRISOSTOMO M. SIBULO", "Subgroup": "BEE1-1", "Room": "TMA 201", "Activity Tag": "Lecture"},
+      {"Activity ID": "477", "Day": "Wed", "Start Time": "12:00 NN - 2:00 PM", "Duration": "4", "Subject": "GNED 05", "Proctor": "MS. MYLA JANE HENEGABUAS", "Subgroup": "BEE1-2", "Room": "TMA 103", "Activity Tag": "Lecture"},
+      {"Activity ID": "478", "Day": "Wed", "Start Time": "12:00 NN - 2:00 PM", "Duration": "4", "Subject": "GNED 05", "Proctor": "MS. MARIECHELLE L. CORREO", "Subgroup": "BEE1-3", "Room": "TMA 202", "Activity Tag": "Lecture"},
+      {"Activity ID": "265", "Day": "Wed", "Start Time": "2:00 - 4:00 PM", "Duration": "4", "Subject": "GNED 04", "Proctor": "MR. FRANCE ANDRIE AÑASCO", "Subgroup": "BSIT2-1", "Room": "TMA 101", "Activity Tag": "Lecture"},
+      {"Activity ID": "266", "Day": "Wed", "Start Time": "2:00 - 4:00 PM", "Duration": "4", "Subject": "GNED 04", "Proctor": "MR. JAN EDIZON J. DE SILVA", "Subgroup": "BSIT2-2", "Room": "TMA 202", "Activity Tag": "Lecture"},
+      {"Activity ID": "267", "Day": "Wed", "Start Time": "2:00 - 4:00 PM", "Duration": "4", "Subject": "GNED 04", "Proctor": "MR. JENICE G. ORPEZA", "Subgroup": "BSIT2-3", "Room": "TMA 103", "Activity Tag": "Lecture"},
+      {"Activity ID": "268", "Day": "Wed", "Start Time": "2:00 - 4:00 PM", "Duration": "4", "Subject": "GNED 04", "Proctor": "MR. JEPRE DINGLASAN", "Subgroup": "BSIT2-4", "Room": "TMA 204", "Activity Tag": "Lecture"},
+      {"Activity ID": "269", "Day": "Wed", "Start Time": "2:00 - 4:00 PM", "Duration": "4", "Subject": "GNED 04", "Proctor": "MR. JOHN MELBERT BUEN", "Subgroup": "BSIT2-5", "Room": "TMA 203", "Activity Tag": "Lecture"},
+      {"Activity ID": "270", "Day": "Wed", "Start Time": "2:00 - 4:00 PM", "Duration": "4", "Subject": "GNED 04", "Proctor": "MR. JOHN MHIKE JOSOL", "Subgroup": "BSIT2-6", "Room": "TMA 201", "Activity Tag": "Lecture"},
+      {"Activity ID": "302", "Day": "Wed", "Start Time": "4:00 - 6:00 PM", "Duration": "4", "Subject": "GNED 06", "Proctor": "MR. ANGELO T. OMIPING", "Subgroup": "BSBA2-1", "Room": "TMA 101", "Activity Tag": "Lecture"},
+      {"Activity ID": "303", "Day": "Wed", "Start Time": "4:00 - 6:00 PM", "Duration": "4", "Subject": "GNED 06", "Proctor": "MR. JOHN PAUL P. DE TORRES", "Subgroup": "BSBA2-2", "Room": "TMA 105", "Activity Tag": "Lecture"},
+      {"Activity ID": "304", "Day": "Wed", "Start Time": "4:00 - 6:00 PM", "Duration": "4", "Subject": "GNED 06", "Proctor": "MS. JESSICA AVON C. QUEZADA", "Subgroup": "BSBA2-3", "Room": "TMA 202", "Activity Tag": "Lecture"},
+      {"Activity ID": "305", "Day": "Wed", "Start Time": "4:00 - 6:00 PM", "Duration": "4", "Subject": "GNED 06", "Proctor": "MR. JULIUS ANGELO B. SARREAL", "Subgroup": "BSBA2-4", "Room": "TMA 203", "Activity Tag": "Lecture"},
+      {"Activity ID": "306", "Day": "Wed", "Start Time": "4:00 - 6:00 PM", "Duration": "4", "Subject": "GNED 06", "Proctor": "MR. KEVIN C. LUCILO", "Subgroup": "BSBA2-5", "Room": "TMA 204", "Activity Tag": "Lecture"},
+      {"Activity ID": "402", "Day": "Wed", "Start Time": "4:00 - 6:00 PM", "Duration": "4", "Subject": "MKTG 80", "Proctor": "MR. KLARENCE BAPTISTA", "Subgroup": "BSBA3-1", "Room": "TMA 104", "Activity Tag": "Lecture"},
+      {"Activity ID": "403", "Day": "Wed", "Start Time": "4:00 - 6:00 PM", "Duration": "4", "Subject": "MKTG 80", "Proctor": "MR. JULIO CASTILLO JR.", "Subgroup": "BSBA3-2", "Room": "TMA 103", "Activity Tag": "Lecture"},
+      {"Activity ID": "404", "Day": "Wed", "Start Time": "4:00 - 6:00 PM", "Duration": "4", "Subject": "MKTG 80", "Proctor": "MR. RONNEL JUL M. SEBASTIAN", "Subgroup": "BSBA3-3", "Room": "TMA 201", "Activity Tag": "Lecture"},
+      {"Activity ID": "324", "Day": "Wed", "Start Time": "6:00 - 8:00 PM", "Duration": "4", "Subject": "GNED 10", "Proctor": "MR. CHRISTIAN JOY SEBASTIAN", "Subgroup": "BSBA2-1", "Room": "TMA 104", "Activity Tag": "Lecture"},
+      {"Activity ID": "325", "Day": "Wed", "Start Time": "6:00 - 8:00 PM", "Duration": "4", "Subject": "GNED 10", "Proctor": "MR. CRISOSTOMO M. SIBULO", "Subgroup": "BSBA2-2", "Room": "TMA 204", "Activity Tag": "Lecture"},
+      {"Activity ID": "326", "Day": "Wed", "Start Time": "6:00 - 8:00 PM", "Duration": "4", "Subject": "GNED 10", "Proctor": "MS. JENILYN TANGALIN", "Subgroup": "BSBA2-3", "Room": "TMA 201", "Activity Tag": "Lecture"},
+      {"Activity ID": "327", "Day": "Wed", "Start Time": "6:00 - 8:00 PM", "Duration": "4", "Subject": "GNED 10", "Proctor": "MR. MARLOU M. TANGALIN", "Subgroup": "BSBA2-4", "Room": "TMA 105", "Activity Tag": "Lecture"},
+      {"Activity ID": "328", "Day": "Wed", "Start Time": "6:00 - 8:00 PM", "Duration": "4", "Subject": "GNED 10", "Proctor": "MS. YOHANAH GUILLERMO", "Subgroup": "BSBA2-5", "Room": "TMA 101", "Activity Tag": "Lecture"},
+      {"Activity ID": "405", "Day": "Wed", "Start Time": "6:00 - 8:00 PM", "Duration": "4", "Subject": "MKTG 85", "Proctor": "MR. ARBIESON F. BRAZA", "Subgroup": "BSBA3-1", "Room": "TMA 103", "Activity Tag": "Lecture"},
+      {"Activity ID": "406", "Day": "Wed", "Start Time": "6:00 - 8:00 PM", "Duration": "4", "Subject": "MKTG 85", "Proctor": "MR. KEVIN C. LUCILO", "Subgroup": "BSBA3-2", "Room": "TMA 202", "Activity Tag": "Lecture"},
+      {"Activity ID": "407", "Day": "Wed", "Start Time": "6:00 - 8:00 PM", "Duration": "4", "Subject": "MKTG 85", "Proctor": "MS. ROJELYN T. PEDIDA", "Subgroup": "BSBA3-3", "Room": "TMA 203", "Activity Tag": "Lecture"},
+      {"Activity ID": "31", "Day": "Thu", "Start Time": "7:00 - 9:00 AM", "Duration": "4", "Subject": "BEEd 35", "Proctor": "MR. ANGELO M. CASTRO", "Subgroup": "BEE3-1", "Room": "TMA 104", "Activity Tag": "Lecture"},
+      {"Activity ID": "32", "Day": "Thu", "Start Time": "7:00 - 9:00 AM", "Duration": "4", "Subject": "BEEd 35", "Proctor": "MR. ARBIESON F. BRAZA", "Subgroup": "BEE3-2", "Room": "TMA 201", "Activity Tag": "Lecture"},
+      {"Activity ID": "39", "Day": "Thu", "Start Time": "7:00 - 9:00 AM", "Duration": "4", "Subject": "BSEE 21", "Proctor": "MR. EFREN G. PEÑAFLORIDA JR.", "Subgroup": "BSE-E1-1", "Room": "TMA 204", "Activity Tag": "Lecture"},
+      {"Activity ID": "40", "Day": "Thu", "Start Time": "7:00 - 9:00 AM", "Duration": "4", "Subject": "BSEE 21", "Proctor": "MR. FRANCE ANDRIE AÑASCO", "Subgroup": "BSE-E1-2", "Room": "TMA 105", "Activity Tag": "Lecture"},
+      {"Activity ID": "41", "Day": "Thu", "Start Time": "7:00 - 9:00 AM", "Duration": "4", "Subject": "BSEE 21", "Proctor": "MR. JENICE G. ORPEZA", "Subgroup": "BSE-E1-3", "Room": "TMA 202", "Activity Tag": "Lecture"},
+      {"Activity ID": "42", "Day": "Thu", "Start Time": "7:00 - 9:00 AM", "Duration": "4", "Subject": "BSEE 21", "Proctor": "MR. JEPRE DINGLASAN", "Subgroup": "BSE-E1-4", "Room": "TMA 101", "Activity Tag": "Lecture"},
+      {"Activity ID": "43", "Day": "Thu", "Start Time": "7:00 - 9:00 AM", "Duration": "4", "Subject": "BSEE 21", "Proctor": "MR. JOHN MHIKE JOSOL", "Subgroup": "BSE-E1-5", "Room": "TMA 203", "Activity Tag": "Lecture"},
+      {"Activity ID": "44", "Day": "Thu", "Start Time": "7:00 - 9:00 AM", "Duration": "4", "Subject": "BSEE 21", "Proctor": "MR. JOHN PAUL P. DE TORRES", "Subgroup": "BSE-E1-6", "Room": "TMA 103", "Activity Tag": "Lecture"},
+      {"Activity ID": "11", "Day": "Thu", "Start Time": "9:00 - 11:00 AM", "Duration": "4", "Subject": "BEEd 21", "Proctor": "MR. KEVIN C. LUCILO", "Subgroup": "BEE2-1", "Room": "TMA 202", "Activity Tag": "Lecture"},
+      {"Activity ID": "12", "Day": "Thu", "Start Time": "9:00 - 11:00 AM", "Duration": "4", "Subject": "BEEd 21", "Proctor": "MR. RICHARD ADRIAN KENN D. PARGAN", "Subgroup": "BEE2-2", "Room": "TMA 104", "Activity Tag": "Lecture"},
+      {"Activity ID": "13", "Day": "Thu", "Start Time": "9:00 - 11:00 AM", "Duration": "4", "Subject": "BEEd 21", "Proctor": "MS. MYLA JANE HENEGABUAS", "Subgroup": "BEE2-3", "Room": "TMA 203", "Activity Tag": "Lecture"},
+      {"Activity ID": "45", "Day": "Thu", "Start Time": "9:00 - 11:00 AM", "Duration": "4", "Subject": "BSEE 23", "Proctor": "MS. QUINCY MAE M. MONTEREY", "Subgroup": "BSE-E2-1", "Room": "TMA 204", "Activity Tag": "Lecture"},
+      {"Activity ID": "46", "Day": "Thu", "Start Time": "9:00 - 11:00 AM", "Duration": "4", "Subject": "BSEE 23", "Proctor": "MS. RICHELLE ROZOL", "Subgroup": "BSE-E2-2", "Room": "TMA 105", "Activity Tag": "Lecture"},
+      {"Activity ID": "47", "Day": "Thu", "Start Time": "9:00 - 11:00 AM", "Duration": "4", "Subject": "BSEE 23", "Proctor": "MS. SHEERIE MHEL COLINA", "Subgroup": "BSE-E2-3", "Room": "TMA 103", "Activity Tag": "Lecture"},
+      {"Activity ID": "48", "Day": "Thu", "Start Time": "9:00 - 11:00 AM", "Duration": "4", "Subject": "BSEE 23", "Proctor": "MS. YOHANAH GUILLERMO", "Subgroup": "BSE-E2-4", "Room": "TMA 101", "Activity Tag": "Lecture"},
+      {"Activity ID": "560", "Day": "Thu", "Start Time": "9:00 - 11:00 AM", "Duration": "4", "Subject": "INSY 55", "Proctor": "MR. EDISON E. FERANIL", "Subgroup": "BSIT3-2", "Room": "TMA 201", "Activity Tag": "Lecture"},
+      {"Activity ID": "249", "Day": "Thu", "Start Time": "11:00 AM - 1:00 PM", "Duration": "4", "Subject": "GNED 04", "Proctor": "MS. YOHANAH GUILLERMO", "Subgroup": "BSBA1-1", "Room": "TMA 101", "Activity Tag": "Lecture"},
+      {"Activity ID": "250", "Day": "Thu", "Start Time": "11:00 AM - 1:00 PM", "Duration": "4", "Subject": "GNED 04", "Proctor": "MR. ANACLETO MARCELINO", "Subgroup": "BSBA1-2", "Room": "TMA 105", "Activity Tag": "Lecture"},
+      {"Activity ID": "251", "Day": "Thu", "Start Time": "11:00 AM - 1:00 PM", "Duration": "4", "Subject": "GNED 04", "Proctor": "MR. ANGELO M. CASTRO", "Subgroup": "BSBA1-3", "Room": "TMA 104", "Activity Tag": "Lecture"},
+      {"Activity ID": "252", "Day": "Thu", "Start Time": "11:00 AM - 1:00 PM", "Duration": "4", "Subject": "GNED 04", "Proctor": "MR. JAN EDIZON J. DE SILVA", "Subgroup": "BSBA1-4", "Room": "TMA 204", "Activity Tag": "Lecture"},
+      {"Activity ID": "253", "Day": "Thu", "Start Time": "11:00 AM - 1:00 PM", "Duration": "4", "Subject": "GNED 04", "Proctor": "MR. JANOS P. RAPANUT", "Subgroup": "BSBA1-5", "Room": "TMA 202", "Activity Tag": "Lecture"},
+      {"Activity ID": "254", "Day": "Thu", "Start Time": "11:00 AM - 1:00 PM", "Duration": "4", "Subject": "GNED 04", "Proctor": "MR. JENICE G. ORPEZA", "Subgroup": "BSBA1-6", "Room": "TMA 203", "Activity Tag": "Lecture"},
+      {"Activity ID": "255", "Day": "Thu", "Start Time": "11:00 AM - 1:00 PM", "Duration": "4", "Subject": "GNED 04", "Proctor": "MR. JONVIC L. SINGCAY", "Subgroup": "BSBA1-7", "Room": "TMA 103", "Activity Tag": "Lecture"},
+      {"Activity ID": "256", "Day": "Thu", "Start Time": "11:00 AM - 1:00 PM", "Duration": "4", "Subject": "GNED 04", "Proctor": "MR. JULIO CASTILLO JR.", "Subgroup": "BSBA1-8", "Room": "TMA 201", "Activity Tag": "Lecture"},
+      {"Activity ID": "20", "Day": "Thu", "Start Time": "1:00 - 3:00 PM", "Duration": "4", "Subject": "BEEd 27", "Proctor": "MR. RODERICK VILLACAMPA", "Subgroup": "BEE2-1", "Room": "TMA 203", "Activity Tag": "Lecture"},
+      {"Activity ID": "21", "Day": "Thu", "Start Time": "1:00 - 3:00 PM", "Duration": "4", "Subject": "BEEd 27", "Proctor": "MR. RONNEL JUL M. SEBASTIAN", "Subgroup": "BEE2-2", "Room": "TMA 104", "Activity Tag": "Lecture"},
+      {"Activity ID": "22", "Day": "Thu", "Start Time": "1:00 - 3:00 PM", "Duration": "4", "Subject": "BEEd 27", "Proctor": "MS. JENNIFER S. NERVAR", "Subgroup": "BEE2-3", "Room": "TMA 204", "Activity Tag": "Lecture"},
+      {"Activity ID": "49", "Day": "Thu", "Start Time": "1:00 - 3:00 PM", "Duration": "4", "Subject": "BSEE 24", "Proctor": "MS. LAARNI MHAE BUCOR", "Subgroup": "BSE-E2-1", "Room": "TMA 201", "Activity Tag": "Lecture"},
+      {"Activity ID": "50", "Day": "Thu", "Start Time": "1:00 - 3:00 PM", "Duration": "4", "Subject": "BSEE 24", "Proctor": "MS. MAGELYN M. RIVERA", "Subgroup": "BSE-E2-2", "Room": "TMA 101", "Activity Tag": "Lecture"},
+      {"Activity ID": "51", "Day": "Thu", "Start Time": "1:00 - 3:00 PM", "Duration": "4", "Subject": "BSEE 24", "Proctor": "MS. MARIECHELLE L. CORREO", "Subgroup": "BSE-E2-3", "Room": "TMA 103", "Activity Tag": "Lecture"},
+      {"Activity ID": "52", "Day": "Thu", "Start Time": "1:00 - 3:00 PM", "Duration": "4", "Subject": "BSEE 24", "Proctor": "MS. MYLA JANE HENEGABUAS", "Subgroup": "BSE-E2-4", "Room": "TMA 202", "Activity Tag": "Lecture"},
+      {"Activity ID": "561", "Day": "Thu", "Start Time": "1:00 - 3:00 PM", "Duration": "4", "Subject": "INSY 55", "Proctor": "MS. SHEERIE MHEL COLINA", "Subgroup": "BSIT3-3", "Room": "TMA 105", "Activity Tag": "Lecture"},
+      {"Activity ID": "93", "Day": "Thu", "Start Time": "3:00 - 5:00 PM", "Duration": "4", "Subject": "ECON 23", "Proctor": "MS. YOHANAH GUILLERMO", "Subgroup": "BSBA1-1", "Room": "TMA 202", "Activity Tag": "Lecture"},
+      {"Activity ID": "94", "Day": "Thu", "Start Time": "3:00 - 5:00 PM", "Duration": "4", "Subject": "ECON 23", "Proctor": "MR. AUDREY GERARD ADVINCULA", "Subgroup": "BSBA1-2", "Room": "TMA 204", "Activity Tag": "Lecture"},
+      {"Activity ID": "95", "Day": "Thu", "Start Time": "3:00 - 5:00 PM", "Duration": "4", "Subject": "ECON 23", "Proctor": "MR. KLARENCE BAPTISTA", "Subgroup": "BSBA1-3", "Room": "TMA 103", "Activity Tag": "Lecture"},
+      {"Activity ID": "96", "Day": "Thu", "Start Time": "3:00 - 5:00 PM", "Duration": "4", "Subject": "ECON 23", "Proctor": "MR. IVERN S. BAUTISTA", "Subgroup": "BSBA1-4", "Room": "TMA 104", "Activity Tag": "Lecture"},
+      {"Activity ID": "97", "Day": "Thu", "Start Time": "3:00 - 5:00 PM", "Duration": "4", "Subject": "ECON 23", "Proctor": "MR. JULIO CASTILLO JR.", "Subgroup": "BSBA1-5", "Room": "TMA 101", "Activity Tag": "Lecture"},
+      {"Activity ID": "98", "Day": "Thu", "Start Time": "3:00 - 5:00 PM", "Duration": "4", "Subject": "ECON 23", "Proctor": "MS. SHEERIE MHEL COLINA", "Subgroup": "BSBA1-6", "Room": "TMA 105", "Activity Tag": "Lecture"},
+      {"Activity ID": "99", "Day": "Thu", "Start Time": "3:00 - 5:00 PM", "Duration": "4", "Subject": "ECON 23", "Proctor": "MS. MARIECHELLE L. CORREO", "Subgroup": "BSBA1-7", "Room": "TMA 201", "Activity Tag": "Lecture"},
+      {"Activity ID": "100", "Day": "Thu", "Start Time": "3:00 - 5:00 PM", "Duration": "4", "Subject": "ECON 23", "Proctor": "MR. JETHRO DELOS ANGELES", "Subgroup": "BSBA1-8", "Room": "TMA 203", "Activity Tag": "Lecture"},
+      {"Activity ID": "341", "Day": "Thu", "Start Time": "6:00 - 8:00 PM", "Duration": "4", "Subject": "GNED 11", "Proctor": "MR. DAVID SHEROM G. GRANADA", "Subgroup": "BSBA1-1", "Room": "TMA 204", "Activity Tag": "Lecture"},
+      {"Activity ID": "342", "Day": "Thu", "Start Time": "6:00 - 8:00 PM", "Duration": "4", "Subject": "GNED 11", "Proctor": "MS. MARY JOY ANGELIQUE R. MOJICA", "Subgroup": "BSBA1-2", "Room": "TMA 103", "Activity Tag": "Lecture"},
+      {"Activity ID": "343", "Day": "Thu", "Start Time": "6:00 - 8:00 PM", "Duration": "4", "Subject": "GNED 11", "Proctor": "MR. MARION ADAM S. PURUGGANAN", "Subgroup": "BSBA1-3", "Room": "TMA 101", "Activity Tag": "Lecture"},
+      {"Activity ID": "344", "Day": "Thu", "Start Time": "6:00 - 8:00 PM", "Duration": "4", "Subject": "GNED 11", "Proctor": "MS. MA. WOODELYN REYES", "Subgroup": "BSBA1-4", "Room": "TMA 202", "Activity Tag": "Lecture"},
+      {"Activity ID": "345", "Day": "Thu", "Start Time": "6:00 - 8:00 PM", "Duration": "4", "Subject": "GNED 11", "Proctor": "MR. CRISOSTOMO M. SIBULO", "Subgroup": "BSBA1-5", "Room": "TMA 105", "Activity Tag": "Lecture"},
+      {"Activity ID": "346", "Day": "Thu", "Start Time": "6:00 - 8:00 PM", "Duration": "4", "Subject": "GNED 11", "Proctor": "MS. JENILYN TANGALIN", "Subgroup": "BSBA1-6", "Room": "TMA 201", "Activity Tag": "Lecture"},
+      {"Activity ID": "347", "Day": "Thu", "Start Time": "6:00 - 8:00 PM", "Duration": "4", "Subject": "GNED 11", "Proctor": "MR. MARLOU M. TANGALIN", "Subgroup": "BSBA1-7", "Room": "TMA 203", "Activity Tag": "Lecture"},
+      {"Activity ID": "348", "Day": "Thu", "Start Time": "6:00 - 8:00 PM", "Duration": "4", "Subject": "GNED 11", "Proctor": "MS. JOHANNA FAYE TRIA", "Subgroup": "BSBA1-8", "Room": "TMA 104", "Activity Tag": "Lecture"},
+      {"Activity ID": "60", "Day": "Fri", "Start Time": "7:00 - 10:00 AM", "Duration": "6", "Subject": "BSEM 25", "Proctor": "MS. MARY ANN L. ANONAS", "Subgroup": "BSE-M2-1", "Room": "TMA 105", "Activity Tag": "Lecture"},
+      {"Activity ID": "64", "Day": "Fri", "Start Time": "7:00 - 10:00 AM", "Duration": "6", "Subject": "BSEM 35", "Proctor": "MR. ANGELO M. CASTRO", "Subgroup": "BSE-M3-1", "Room": "TMA 103", "Activity Tag": "Lecture"},
+      {"Activity ID": "17", "Day": "Fri", "Start Time": "08:00 - 10:00 AM", "Duration": "4", "Subject": "BEEd 25", "Proctor": "MR. JETHRO DELOS ANGELES", "Subgroup": "BEE2-1", "Room": "TMA 203", "Activity Tag": "Lecture"},
+      {"Activity ID": "18", "Day": "Fri", "Start Time": "08:00 - 10:00 AM", "Duration": "4", "Subject": "BEEd 25", "Proctor": "MS. FATIMA M. DIAZ", "Subgroup": "BEE2-2", "Room": "TMA 104", "Activity Tag": "Lecture"},
+      {"Activity ID": "19", "Day": "Fri", "Start Time": "08:00 - 10:00 AM", "Duration": "4", "Subject": "BEEd 25", "Proctor": "MR. EDISON E. FERANIL", "Subgroup": "BEE2-3", "Room": "TMA 201", "Activity Tag": "Lecture"},
+      {"Activity ID": "399", "Day": "Fri", "Start Time": "08:00 - 10:00 AM", "Duration": "4", "Subject": "MKTG 75", "Proctor": "MS. MYLA JANE HENEGABUAS", "Subgroup": "BSBA3-1", "Room": "TMA 204", "Activity Tag": "Lecture"},
+      {"Activity ID": "400", "Day": "Fri", "Start Time": "08:00 - 10:00 AM", "Duration": "4", "Subject": "MKTG 75", "Proctor": "MR. CHRIS JOHN JUDIN", "Subgroup": "BSBA3-2", "Room": "TMA 101", "Activity Tag": "Lecture"},
+      {"Activity ID": "401", "Day": "Fri", "Start Time": "08:00 - 10:00 AM", "Duration": "4", "Subject": "MKTG 75", "Proctor": "MR. KEVIN C. LUCILO", "Subgroup": "BSBA3-3", "Room": "TMA 202", "Activity Tag": "Lecture"},
+      {"Activity ID": "143", "Day": "Fri", "Start Time": "10:00 AM - 12:00 NN", "Duration": "4", "Subject": "EDUC 60", "Proctor": "MR. MUHAIMIN P. MACAPUNDAG", "Subgroup": "BSE-E1-1", "Room": "TMA 103", "Activity Tag": "Lecture"},
+      {"Activity ID": "144", "Day": "Fri", "Start Time": "10:00 AM - 12:00 NN", "Duration": "4", "Subject": "EDUC 60", "Proctor": "MS. ROJELYN T. PEDIDA", "Subgroup": "BSE-E1-2", "Room": "TMA 204", "Activity Tag": "Lecture"},
+      {"Activity ID": "145", "Day": "Fri", "Start Time": "10:00 AM - 12:00 NN", "Duration": "4", "Subject": "EDUC 60", "Proctor": "MR. EFREN G. PEÑAFLORIDA JR.", "Subgroup": "BSE-E1-3", "Room": "TMA 105", "Activity Tag": "Lecture"},
+      {"Activity ID": "146", "Day": "Fri", "Start Time": "10:00 AM - 12:00 NN", "Duration": "4", "Subject": "EDUC 60", "Proctor": "MS. NOEMI A. PERIDA", "Subgroup": "BSE-E1-4", "Room": "TMA 101", "Activity Tag": "Lecture"},
+      {"Activity ID": "147", "Day": "Fri", "Start Time": "10:00 AM - 12:00 NN", "Duration": "4", "Subject": "EDUC 60", "Proctor": "MS. GECILLE MARIE A. REYES", "Subgroup": "BSE-E1-5", "Room": "TMA 203", "Activity Tag": "Lecture"},
+      {"Activity ID": "148", "Day": "Fri", "Start Time": "10:00 AM - 12:00 NN", "Duration": "4", "Subject": "EDUC 60", "Proctor": "MS. MA. WOODELYN REYES", "Subgroup": "BSE-E1-6", "Room": "TMA 201", "Activity Tag": "Lecture"},
+      {"Activity ID": "149", "Day": "Fri", "Start Time": "10:00 AM - 12:00 NN", "Duration": "4", "Subject": "EDUC 60", "Proctor": "MS. MAGELYN M. RIVERA", "Subgroup": "BSE-M1-1", "Room": "TMA 202", "Activity Tag": "Lecture"},
+      {"Activity ID": "150", "Day": "Fri", "Start Time": "10:00 AM - 12:00 NN", "Duration": "4", "Subject": "EDUC 60", "Proctor": "MR. JOSEPH O. SABAYBAY", "Subgroup": "BSE-M1-2", "Room": "TMA 104", "Activity Tag": "Lecture"},
+      {"Activity ID": "37", "Day": "Fri", "Start Time": "12:00 NN - 2:00 PM", "Duration": "4", "Subject": "BSEE 111", "Proctor": "MS. MARY ANN L. ANONAS", "Subgroup": "BSE-E3-1", "Room": "TMA 105", "Activity Tag": "Lecture"},
+      {"Activity ID": "38", "Day": "Fri", "Start Time": "12:00 NN - 2:00 PM", "Duration": "4", "Subject": "BSEE 111", "Proctor": "MS. LAARNI MHAE BUCOR", "Subgroup": "BSE-E3-2", "Room": "TMA 103", "Activity Tag": "Lecture"},
+      {"Activity ID": "83", "Day": "Fri", "Start Time": "12:00 NN - 2:00 PM", "Duration": "4", "Subject": "BSEE 33", "Proctor": "MS. MARIECHELLE L. CORREO", "Subgroup": "BSE-E2-1", "Room": "TMA 202", "Activity Tag": "Lecture"},
+      {"Activity ID": "84", "Day": "Fri", "Start Time": "12:00 NN - 2:00 PM", "Duration": "4", "Subject": "BSEE 33", "Proctor": "MS. FATIMA M. DIAZ", "Subgroup": "BSE-E2-2", "Room": "TMA 201", "Activity Tag": "Lecture"},
+      {"Activity ID": "85", "Day": "Fri", "Start Time": "12:00 NN - 2:00 PM", "Duration": "4", "Subject": "BSEE 33", "Proctor": "ATTY. CHARMAINE A. GABELO", "Subgroup": "BSE-E2-3", "Room": "TMA 104", "Activity Tag": "Lecture"},
+      {"Activity ID": "86", "Day": "Fri", "Start Time": "12:00 NN - 2:00 PM", "Duration": "4", "Subject": "BSEE 33", "Proctor": "MS. YOHANAH GUILLERMO", "Subgroup": "BSE-E2-4", "Room": "TMA 101", "Activity Tag": "Lecture"},
+      {"Activity ID": "507", "Day": "Fri", "Start Time": "12:00 NN - 2:00 PM", "Duration": "4", "Subject": "ITEC 116", "Proctor": "MR. CHRIS JOHN JUDIN", "Subgroup": "BSIT4-1", "Room": "TMA 203", "Activity Tag": "Lecture"},
+      {"Activity ID": "508", "Day": "Fri", "Start Time": "12:00 NN - 2:00 PM", "Duration": "4", "Subject": "ITEC 116", "Proctor": "MR. KEVIN C. LUCILO", "Subgroup": "BSIT4-2", "Room": "TMA 204", "Activity Tag": "Lecture"},
+      {"Activity ID": "285", "Day": "Fri", "Start Time": "2:00 - 4:00 PM", "Duration": "4", "Subject": "GNED 05", "Proctor": "MS. ROJELYN T. PEDIDA", "Subgroup": "BSE-E1-1", "Room": "TMA 103", "Activity Tag": "Lecture"},
+      {"Activity ID": "286", "Day": "Fri", "Start Time": "2:00 - 4:00 PM", "Duration": "4", "Subject": "GNED 05", "Proctor": "MR. EFREN G. PEÑAFLORIDA JR.", "Subgroup": "BSE-E1-2", "Room": "TMA 201", "Activity Tag": "Lecture"},
+      {"Activity ID": "287", "Day": "Fri", "Start Time": "2:00 - 4:00 PM", "Duration": "4", "Subject": "GNED 05", "Proctor": "MR. JANOS P. RAPANUT", "Subgroup": "BSE-E1-3", "Room": "TMA 105", "Activity Tag": "Lecture"},
+      {"Activity ID": "288", "Day": "Fri", "Start Time": "2:00 - 4:00 PM", "Duration": "4", "Subject": "GNED 05", "Proctor": "MS. GECILLE MARIE A. REYES", "Subgroup": "BSE-E1-4", "Room": "TMA 104", "Activity Tag": "Lecture"},
+      {"Activity ID": "289", "Day": "Fri", "Start Time": "2:00 - 4:00 PM", "Duration": "4", "Subject": "GNED 05", "Proctor": "MS. MAGELYN M. RIVERA", "Subgroup": "BSE-E1-5", "Room": "TMA 101", "Activity Tag": "Lecture"},
+      {"Activity ID": "290", "Day": "Fri", "Start Time": "2:00 - 4:00 PM", "Duration": "4", "Subject": "GNED 05", "Proctor": "MS. RICHELLE ROZOL", "Subgroup": "BSE-E1-6", "Room": "TMA 203", "Activity Tag": "Lecture"},
+      {"Activity ID": "291", "Day": "Fri", "Start Time": "2:00 - 4:00 PM", "Duration": "4", "Subject": "GNED 05", "Proctor": "MR. JULIUS ANGELO B. SARREAL", "Subgroup": "BSE-M1-1", "Room": "TMA 204", "Activity Tag": "Lecture"},
+      {"Activity ID": "292", "Day": "Fri", "Start Time": "2:00 - 4:00 PM", "Duration": "4", "Subject": "GNED 05", "Proctor": "MR. JONVIC L. SINGCAY", "Subgroup": "BSE-M1-2", "Room": "TMA 202", "Activity Tag": "Lecture"},
+      {"Activity ID": "128", "Day": "Fri", "Start Time": "4:00 - 6:00 PM", "Duration": "4", "Subject": "EDUC 55", "Proctor": "MR. IVERN S. BAUTISTA", "Subgroup": "BSE-M1-1", "Room": "TMA 101", "Activity Tag": "Lecture"},
+      {"Activity ID": "129", "Day": "Fri", "Start Time": "4:00 - 6:00 PM", "Duration": "4", "Subject": "EDUC 55", "Proctor": "MR. JEFFREY M. DELGADO", "Subgroup": "BSE-M1-2", "Room": "TMA 203", "Activity Tag": "Lecture"},
+      {"Activity ID": "131", "Day": "Fri", "Start Time": "4:00 - 6:00 PM", "Duration": "4", "Subject": "EDUC 55", "Proctor": "ATTY. CHARMAINE A. GABELO", "Subgroup": "BSE-E1-1", "Room": "TMA 201", "Activity Tag": "Lecture"},
+      {"Activity ID": "132", "Day": "Fri", "Start Time": "4:00 - 6:00 PM", "Duration": "4", "Subject": "EDUC 55", "Proctor": "MS. YOHANAH GUILLERMO", "Subgroup": "BSE-E1-2", "Room": "TMA 204", "Activity Tag": "Lecture"},
+      {"Activity ID": "133", "Day": "Fri", "Start Time": "4:00 - 6:00 PM", "Duration": "4", "Subject": "EDUC 55", "Proctor": "MS. NOEMI A. PERIDA", "Subgroup": "BSE-E1-3", "Room": "TMA 104", "Activity Tag": "Lecture"},
+      {"Activity ID": "134", "Day": "Fri", "Start Time": "4:00 - 6:00 PM", "Duration": "4", "Subject": "EDUC 55", "Proctor": "MR. JANOS P. RAPANUT", "Subgroup": "BSE-E1-4", "Room": "TMA 103", "Activity Tag": "Lecture"},
+      {"Activity ID": "135", "Day": "Fri", "Start Time": "4:00 - 6:00 PM", "Duration": "4", "Subject": "EDUC 55", "Proctor": "MS. RICHELLE ROZOL", "Subgroup": "BSE-E1-5", "Room": "TMA 105", "Activity Tag": "Lecture"},
+      {"Activity ID": "136", "Day": "Fri", "Start Time": "4:00 - 6:00 PM", "Duration": "4", "Subject": "EDUC 55", "Proctor": "MR. CRISOSTOMO M. SIBULO", "Subgroup": "BSE-E1-6", "Room": "TMA 202", "Activity Tag": "Lecture"},
+      {"Activity ID": "257", "Day": "Fri", "Start Time": "6:00 - 8:00 PM", "Duration": "4", "Subject": "GNED 04", "Proctor": "MR. IVERN S. BAUTISTA", "Subgroup": "BEE2-1", "Room": "TMA 203", "Activity Tag": "Lecture"},
+      {"Activity ID": "258", "Day": "Fri", "Start Time": "6:00 - 8:00 PM", "Duration": "4", "Subject": "GNED 04", "Proctor": "MR. JEFFREY M. DELGADO", "Subgroup": "BEE2-2", "Room": "TMA 105", "Activity Tag": "Lecture"},
+      {"Activity ID": "259", "Day": "Fri", "Start Time": "6:00 - 8:00 PM", "Duration": "4", "Subject": "GNED 04", "Proctor": "MS. YOHANAH GUILLERMO", "Subgroup": "BEE2-3", "Room": "TMA 103", "Activity Tag": "Lecture"},
+      {"Activity ID": "260", "Day": "Fri", "Start Time": "6:00 - 8:00 PM", "Duration": "4", "Subject": "GNED 04", "Proctor": "MR. JANOS P. RAPANUT", "Subgroup": "BSE-E2-1", "Room": "TMA 202", "Activity Tag": "Lecture"},
+      {"Activity ID": "261", "Day": "Fri", "Start Time": "6:00 - 8:00 PM", "Duration": "4", "Subject": "GNED 04", "Proctor": "MS. RICHELLE ROZOL", "Subgroup": "BSE-E2-2", "Room": "TMA 204", "Activity Tag": "Lecture"},
+      {"Activity ID": "262", "Day": "Fri", "Start Time": "6:00 - 8:00 PM", "Duration": "4", "Subject": "GNED 04", "Proctor": "MR. CRISOSTOMO M. SIBULO", "Subgroup": "BSE-E2-3", "Room": "TMA 101", "Activity Tag": "Lecture"},
+      {"Activity ID": "263", "Day": "Fri", "Start Time": "6:00 - 8:00 PM", "Duration": "4", "Subject": "GNED 04", "Proctor": "MR. MARLOU M. TANGALIN", "Subgroup": "BSE-E2-4", "Room": "TMA 201", "Activity Tag": "Lecture"},
+      {"Activity ID": "264", "Day": "Fri", "Start Time": "6:00 - 8:00 PM", "Duration": "4", "Subject": "GNED 04", "Proctor": "MR. CHRISTIAN JOY SEBASTIAN", "Subgroup": "BSE-M2-1", "Room": "TMA 104", "Activity Tag": "Lecture"},
+      {"Activity ID": "67", "Day": "Sat", "Start Time": "08:00 - 10:00 AM", "Duration": "4", "Subject": "COSC 50", "Proctor": "MR. CHRIS JOHN JUDIN", "Subgroup": "BSIT1-1", "Room": "TMA 201", "Activity Tag": "Lecture"},
+      {"Activity ID": "68", "Day": "Sat", "Start Time": "08:00 - 10:00 AM", "Duration": "4", "Subject": "COSC 50", "Proctor": "MR. CHRISTIAN JOY SEBASTIAN", "Subgroup": "BSIT1-2", "Room": "TMA 104", "Activity Tag": "Lecture"},
+      {"Activity ID": "69", "Day": "Sat", "Start Time": "08:00 - 10:00 AM", "Duration": "4", "Subject": "COSC 50", "Proctor": "MR. JENICE G. ORPEZA", "Subgroup": "BSIT1-3", "Room": "TMA 204", "Activity Tag": "Lecture"},
+      {"Activity ID": "70", "Day": "Sat", "Start Time": "08:00 - 10:00 AM", "Duration": "4", "Subject": "COSC 50", "Proctor": "MR. JETHRO DELOS ANGELES", "Subgroup": "BSIT1-4", "Room": "TMA 202", "Activity Tag": "Lecture"},
+      {"Activity ID": "71", "Day": "Sat", "Start Time": "08:00 - 10:00 AM", "Duration": "4", "Subject": "COSC 50", "Proctor": "MR. JOHN MHIKE JOSOL", "Subgroup": "BSIT1-5", "Room": "TMA 101", "Activity Tag": "Lecture"},
+      {"Activity ID": "72", "Day": "Sat", "Start Time": "08:00 - 10:00 AM", "Duration": "4", "Subject": "COSC 50", "Proctor": "MR. JULIUS ANGELO B. SARREAL", "Subgroup": "BSIT1-6", "Room": "TMA 105", "Activity Tag": "Lecture"},
+      {"Activity ID": "73", "Day": "Sat", "Start Time": "08:00 - 10:00 AM", "Duration": "4", "Subject": "COSC 50", "Proctor": "MR. MUHAIMIN P. MACAPUNDAG", "Subgroup": "BSIT1-7", "Room": "TMA 103", "Activity Tag": "Lecture"},
+      {"Activity ID": "74", "Day": "Sat", "Start Time": "08:00 - 10:00 AM", "Duration": "4", "Subject": "COSC 50", "Proctor": "MS. AUDREYSON H. BORILLA", "Subgroup": "BSIT1-8", "Room": "TMA 203", "Activity Tag": "Lecture"},
+      {"Activity ID": "392", "Day": "Sat", "Start Time": "10:00 AM - 12:00 NN", "Duration": "4", "Subject": "MKTG 55", "Proctor": "MS. FATIMA M. DIAZ", "Subgroup": "BSBA2-1", "Room": "TMA 204", "Activity Tag": "Lecture"},
+      {"Activity ID": "393", "Day": "Sat", "Start Time": "10:00 AM - 12:00 NN", "Duration": "4", "Subject": "MKTG 55", "Proctor": "MS. GECILLE MARIE A. REYES", "Subgroup": "BSBA2-2", "Room": "TMA 105", "Activity Tag": "Lecture"},
+      {"Activity ID": "394", "Day": "Sat", "Start Time": "10:00 AM - 12:00 NN", "Duration": "4", "Subject": "MKTG 55", "Proctor": "MS. JENNIFER S. NERVAR", "Subgroup": "BSBA2-3", "Room": "TMA 201", "Activity Tag": "Lecture"},
+      {"Activity ID": "395", "Day": "Sat", "Start Time": "10:00 AM - 12:00 NN", "Duration": "4", "Subject": "MKTG 55", "Proctor": "MS. JOHANNA FAYE TRIA", "Subgroup": "BSBA2-4", "Room": "TMA 104", "Activity Tag": "Lecture"},
+      {"Activity ID": "396", "Day": "Sat", "Start Time": "10:00 AM - 12:00 NN", "Duration": "4", "Subject": "MKTG 55", "Proctor": "MS. MAGELYN M. RIVERA", "Subgroup": "BSBA2-5", "Room": "TMA 103", "Activity Tag": "Lecture"},
+      {"Activity ID": "397", "Day": "Sat", "Start Time": "10:00 AM - 12:00 NN", "Duration": "4", "Subject": "MKTG 55", "Proctor": "MS. MYLA JANE HENEGABUAS", "Subgroup": "BSBA2-Irreg1", "Room": "TMA 202", "Activity Tag": "Lecture"},
+      {"Activity ID": "398", "Day": "Sat", "Start Time": "10:00 AM - 12:00 NN", "Duration": "4", "Subject": "MKTG 55", "Proctor": "MS. ROJELYN T. PEDIDA", "Subgroup": "BSBA2-Irreg2", "Room": "TMA 101", "Activity Tag": "Lecture"},
+      {"Activity ID": "562", "Day": "Sat", "Start Time": "10:00 AM - 12:00 NN", "Duration": "4", "Subject": "INSY 55", "Proctor": "MS. SHEERIE MHEL COLINA", "Subgroup": "BSIT3-4", "Room": "TMA 203", "Activity Tag": "Lecture"},
+      {"Activity ID": "563", "Day": "Sat", "Start Time": "12:00 NN - 2:00 PM", "Duration": "4", "Subject": "DCIT 22", "Proctor": "MR. CHRISTIAN JOY SEBASTIAN", "Subgroup": "BSIT1-1", "Room": "TMA 105", "Activity Tag": "Lecture"},
+      {"Activity ID": "564", "Day": "Sat", "Start Time": "12:00 NN - 2:00 PM", "Duration": "4", "Subject": "DCIT 22", "Proctor": "MR. RONNEL JUL M. SEBASTIAN", "Subgroup": "BSIT1-2", "Room": "TMA 204", "Activity Tag": "Lecture"},
+      {"Activity ID": "565", "Day": "Sat", "Start Time": "12:00 NN - 2:00 PM", "Duration": "4", "Subject": "DCIT 22", "Proctor": "MR. JONVIC L. SINGCAY", "Subgroup": "BSIT1-3", "Room": "TMA 201", "Activity Tag": "Lecture"},
+      {"Activity ID": "566", "Day": "Sat", "Start Time": "12:00 NN - 2:00 PM", "Duration": "4", "Subject": "DCIT 22", "Proctor": "MS. JOHANNA FAYE TRIA", "Subgroup": "BSIT1-4", "Room": "TMA 104", "Activity Tag": "Lecture"},
+      {"Activity ID": "567", "Day": "Sat", "Start Time": "12:00 NN - 2:00 PM", "Duration": "4", "Subject": "DCIT 22", "Proctor": "MS. MARIECHELLE L. CORREO", "Subgroup": "BSIT1-5", "Room": "TMA 101", "Activity Tag": "Lecture"},
+      {"Activity ID": "568", "Day": "Sat", "Start Time": "12:00 NN - 2:00 PM", "Duration": "4", "Subject": "DCIT 22", "Proctor": "MR. JEFFREY M. DELGADO", "Subgroup": "BSIT1-6", "Room": "TMA 103", "Activity Tag": "Lecture"},
+      {"Activity ID": "569", "Day": "Sat", "Start Time": "12:00 NN - 2:00 PM", "Duration": "4", "Subject": "DCIT 22", "Proctor": "MS. FATIMA M. DIAZ", "Subgroup": "BSIT1-7", "Room": "TMA 202", "Activity Tag": "Lecture"},
+      {"Activity ID": "570", "Day": "Sat", "Start Time": "12:00 NN - 2:00 PM", "Duration": "4", "Subject": "DCIT 22", "Proctor": "MR. JOHN MHIKE JOSOL", "Subgroup": "BSIT1-8", "Room": "TMA 203", "Activity Tag": "Lecture"},
+      {"Activity ID": "101", "Day": "Sat", "Start Time": "2:00 - 4:00 PM", "Duration": "4", "Subject": "ECON 24", "Proctor": "MR. CHRIS JOHN JUDIN", "Subgroup": "BSBA2-1", "Room": "TMA 101", "Activity Tag": "Lecture"},
+      {"Activity ID": "102", "Day": "Sat", "Start Time": "2:00 - 4:00 PM", "Duration": "4", "Subject": "ECON 24", "Proctor": "MR. ANGELO T. OMIPING", "Subgroup": "BSBA2-2", "Room": "TMA 204", "Activity Tag": "Lecture"},
+      {"Activity ID": "103", "Day": "Sat", "Start Time": "2:00 - 4:00 PM", "Duration": "4", "Subject": "ECON 24", "Proctor": "MR. RICHARD ADRIAN KENN D. PARGAN", "Subgroup": "BSBA2-3", "Room": "TMA 202", "Activity Tag": "Lecture"},
+      {"Activity ID": "104", "Day": "Sat", "Start Time": "2:00 - 4:00 PM", "Duration": "4", "Subject": "ECON 24", "Proctor": "MR. MARION ADAM S. PURUGGANAN", "Subgroup": "BSBA2-4", "Room": "TMA 105", "Activity Tag": "Lecture"},
+      {"Activity ID": "105", "Day": "Sat", "Start Time": "2:00 - 4:00 PM", "Duration": "4", "Subject": "ECON 24", "Proctor": "MR. HYRAM ADRIENNE M. SALINAS", "Subgroup": "BSBA2-5", "Room": "TMA 104", "Activity Tag": "Lecture"},
+      {"Activity ID": "106", "Day": "Sat", "Start Time": "2:00 - 4:00 PM", "Duration": "4", "Subject": "ECON 24", "Proctor": "MS. GECILLE MARIE A. REYES", "Subgroup": "BSBA2-Irreg1", "Room": "TMA 103", "Activity Tag": "Lecture"},
+      {"Activity ID": "107", "Day": "Sat", "Start Time": "2:00 - 4:00 PM", "Duration": "4", "Subject": "ECON 24", "Proctor": "MS. MAGELYN M. RIVERA", "Subgroup": "BSBA2-Irreg2", "Room": "TMA 201", "Activity Tag": "Lecture"},
+      {"Activity ID": "559", "Day": "Sat", "Start Time": "2:00 - 4:00 PM", "Duration": "4", "Subject": "INSY 55", "Proctor": "MR. JULIUS ANGELO B. SARREAL", "Subgroup": "BSIT3-1", "Room": "TMA 203", "Activity Tag": "Lecture"},
+      {"Activity ID": "113", "Day": "Sat", "Start Time": "4:00 - 6:00 PM", "Duration": "4", "Subject": "EDUC 50", "Proctor": "MR. CHRIS JOHN JUDIN", "Subgroup": "BEE1-1", "Room": "TMA 101", "Activity Tag": "Lecture"},
+      {"Activity ID": "114", "Day": "Sat", "Start Time": "4:00 - 6:00 PM", "Duration": "4", "Subject": "EDUC 50", "Proctor": "MR. DAVID SHEROM G. GRANADA", "Subgroup": "BEE1-2", "Room": "TMA 202", "Activity Tag": "Lecture"},
+      {"Activity ID": "115", "Day": "Sat", "Start Time": "4:00 - 6:00 PM", "Duration": "4", "Subject": "EDUC 50", "Proctor": "MR. JOHN MELBERT BUEN", "Subgroup": "BEE1-3", "Room": "TMA 105", "Activity Tag": "Lecture"},
+      {"Activity ID": "116", "Day": "Sat", "Start Time": "4:00 - 6:00 PM", "Duration": "4", "Subject": "EDUC 50", "Proctor": "MR. MARION ADAM S. PURUGGANAN", "Subgroup": "BEE1-4", "Room": "TMA 104", "Activity Tag": "Lecture"},
+      {"Activity ID": "117", "Day": "Sat", "Start Time": "4:00 - 6:00 PM", "Duration": "4", "Subject": "EDUC 50", "Proctor": "MS. MARY ANN L. ANONAS", "Subgroup": "BEE1-5", "Room": "TMA 201", "Activity Tag": "Lecture"},
+      {"Activity ID": "118", "Day": "Sat", "Start Time": "4:00 - 6:00 PM", "Duration": "4", "Subject": "EDUC 50", "Proctor": "MS. SHEERIE MHEL COLINA", "Subgroup": "BEE1-6", "Room": "TMA 203", "Activity Tag": "Lecture"},
+      {"Activity ID": "119", "Day": "Sat", "Start Time": "4:00 - 6:00 PM", "Duration": "4", "Subject": "EDUC 50", "Proctor": "MR. KLARENCE BAPTISTA", "Subgroup": "BSE-M1-1", "Room": "TMA 204", "Activity Tag": "Lecture"},
+      {"Activity ID": "120", "Day": "Sat", "Start Time": "4:00 - 6:00 PM", "Duration": "4", "Subject": "EDUC 50", "Proctor": "MS. AUDREYSON H. BORILLA", "Subgroup": "BSE-M1-2", "Room": "TMA 103", "Activity Tag": "Lecture"},
+      {"Activity ID": "335", "Day": "Sat", "Start Time": "6:00 - 8:00 PM", "Duration": "4", "Subject": "GNED 11", "Proctor": "MR. ARBIESON F. BRAZA", "Subgroup": "BEE1-1", "Room": "TMA 104", "Activity Tag": "Lecture"},
+      {"Activity ID": "336", "Day": "Sat", "Start Time": "6:00 - 8:00 PM", "Duration": "4", "Subject": "GNED 11", "Proctor": "MS. FATIMA M. DIAZ", "Subgroup": "BEE1-2", "Room": "TMA 204", "Activity Tag": "Lecture"},
+      {"Activity ID": "337", "Day": "Sat", "Start Time": "6:00 - 8:00 PM", "Duration": "4", "Subject": "GNED 11", "Proctor": "MS. YOHANAH GUILLERMO", "Subgroup": "BEE1-3", "Room": "TMA 202", "Activity Tag": "Lecture"},
+      {"Activity ID": "338", "Day": "Sat", "Start Time": "6:00 - 8:00 PM", "Duration": "4", "Subject": "GNED 11", "Proctor": "MS. ROJELYN T. PEDIDA", "Subgroup": "BEE1-4", "Room": "TMA 103", "Activity Tag": "Lecture"},
+      {"Activity ID": "339", "Day": "Sat", "Start Time": "6:00 - 8:00 PM", "Duration": "4", "Subject": "GNED 11", "Proctor": "MS. MAGELYN M. RIVERA", "Subgroup": "BEE1-5", "Room": "TMA 203", "Activity Tag": "Lecture"},
+      {"Activity ID": "340", "Day": "Sat", "Start Time": "6:00 - 8:00 PM", "Duration": "4", "Subject": "GNED 11", "Proctor": "MR. MARLOU M. TANGALIN", "Subgroup": "BEE1-6", "Room": "TMA 201", "Activity Tag": "Lecture"}
+    ];
+
+    let currentView = 'cards';
+    let selectedDay = '';
+    let parsedData = [];
+
+    // Helper: parse subgroup code (e.g., BSIT4-1, BSE-E2-3, BEE1-4, BSBA2-Irreg1)
+    function parseSubgroup(code) {
+      if (!code) return { program: '', year: '', section: '', full: '' };
+      const trimmed = code.trim();
+      const standardMatch = trimmed.match(/^([A-Za-z\-]+?)(\d)-(\d+)$/);
+      if (standardMatch) {
+        return {
+          program: standardMatch[1],
+          year: standardMatch[2],
+          section: standardMatch[3],
+          full: trimmed
+        };
+      }
+      const irregMatch = trimmed.match(/^([A-Za-z\-]+?)(\d)-(Irreg\d+)$/);
+      if (irregMatch) {
+        return {
+          program: irregMatch[1],
+          year: irregMatch[2],
+          section: irregMatch[3],
+          full: trimmed
+        };
+      }
+      return { program: trimmed, year: '', section: '', full: trimmed };
+    }
+
+    function init() {
+      parsedData = embeddedData.map(item => ({
+        ...item,
+        Proctor: (item.Proctor || '').replace(/\u00a0/g, ' ').replace(/\s+/g, ' ').trim(),
+        parsed: parseSubgroup(item.Subgroup)
+      }));
+
+      populateFilters();
+      applyFilters();
+    }
+
+    function populateFilters() {
+      const programs = [...new Set(parsedData.map(d => d.parsed.program).filter(Boolean))].sort();
+      const years = [...new Set(parsedData.map(d => d.parsed.year).filter(Boolean))].sort();
+      const sections = [...new Set(parsedData.map(d => d.parsed.section).filter(Boolean))].sort();
+      const subgroups = [...new Set(parsedData.map(d => d.Subgroup).filter(Boolean))].sort();
+
+      const progSelect = document.getElementById('filterProgram');
+      programs.forEach(p => {
+        const opt = document.createElement('option');
+        opt.value = p;
+        opt.textContent = p;
+        progSelect.appendChild(opt);
+      });
+
+      const yearSelect = document.getElementById('filterYear');
+      years.forEach(y => {
+        const opt = document.createElement('option');
+        opt.value = y;
+        opt.textContent = `Year ${y}`;
+        yearSelect.appendChild(opt);
+      });
+
+      const secSelect = document.getElementById('filterSection');
+      sections.forEach(s => {
+        const opt = document.createElement('option');
+        opt.value = s;
+        opt.textContent = s.startsWith('Irreg') ? s : `Section ${s}`;
+        secSelect.appendChild(opt);
+      });
+
+      const subSelect = document.getElementById('filterSubgroup');
+      subgroups.forEach(sg => {
+        const opt = document.createElement('option');
+        opt.value = sg;
+        opt.textContent = sg;
+        subSelect.appendChild(opt);
+      });
+    }
+
+    function onProgramChange() {
+      document.getElementById('filterSubgroup').value = '';
+      applyFilters();
+    }
+
+    function onYearChange() {
+      document.getElementById('filterSubgroup').value = '';
+      applyFilters();
+    }
+
+    function onSectionChange() {
+      document.getElementById('filterSubgroup').value = '';
+      applyFilters();
+    }
+
+    function onSubgroupChange() {
+      const val = document.getElementById('filterSubgroup').value;
+      if (val) {
+        const p = parseSubgroup(val);
+        document.getElementById('filterProgram').value = p.program || '';
+        document.getElementById('filterYear').value = p.year || '';
+        document.getElementById('filterSection').value = p.section || '';
+      }
+      applyFilters();
+    }
+
+    function setDayFilter(day) {
+      selectedDay = day;
+      document.querySelectorAll('.day-filter-btn').forEach(b => {
+        b.className = 'day-filter-btn px-3 py-1 text-xs font-semibold rounded-lg bg-slate-100 text-slate-700 hover:bg-slate-200';
+      });
+      const activeId = day ? `dayBtn-${day}` : 'dayBtn-all';
+      const activeBtn = document.getElementById(activeId);
+      if (activeBtn) {
+        activeBtn.className = 'day-filter-btn px-3 py-1 text-xs font-bold rounded-lg bg-cvsu-700 text-white shadow-xs';
+      }
+      applyFilters();
+    }
+
+    function setViewMode(mode) {
+      currentView = mode;
+      const cardBtn = document.getElementById('viewCardBtn');
+      const tblBtn = document.getElementById('viewTableBtn');
+
+      if (mode === 'cards') {
+        cardBtn.className = 'p-1.5 rounded bg-cvsu-100 text-cvsu-800 hover:bg-cvsu-200 transition';
+        tblBtn.className = 'p-1.5 rounded text-slate-500 hover:bg-slate-100 transition';
+      } else {
+        tblBtn.className = 'p-1.5 rounded bg-cvsu-100 text-cvsu-800 hover:bg-cvsu-200 transition';
+        cardBtn.className = 'p-1.5 rounded text-slate-500 hover:bg-slate-100 transition';
+      }
+      applyFilters();
+    }
+
+    function resetFilters() {
+      document.getElementById('filterProgram').value = '';
+      document.getElementById('filterYear').value = '';
+      document.getElementById('filterSection').value = '';
+      document.getElementById('filterSubgroup').value = '';
+      document.getElementById('searchInput').value = '';
+      setDayFilter('');
+    }
+
+    function applyFilters() {
+      const prog = document.getElementById('filterProgram').value;
+      const year = document.getElementById('filterYear').value;
+      const sec = document.getElementById('filterSection').value;
+      const directSub = document.getElementById('filterSubgroup').value;
+      const term = document.getElementById('searchInput').value.trim().toLowerCase();
+
+      const filtered = parsedData.filter(item => {
+        if (selectedDay && item.Day !== selectedDay) return false;
+        if (directSub && item.Subgroup !== directSub) return false;
+        if (!directSub) {
+          if (prog && item.parsed.program !== prog) return false;
+          if (year && item.parsed.year !== year) return false;
+          if (sec && item.parsed.section !== sec) return false;
+        }
+        if (term) {
+          const searchable = `${item["Activity ID"] || ''} ${item.Subject} ${item.Proctor} ${item.Room} ${item.Subgroup} ${item["Activity Tag"]}`.toLowerCase();
+          if (!searchable.includes(term)) return false;
+        }
+        return true;
+      });
+
+      renderResults(filtered);
+    }
+
+    function renderResults(data) {
+      const container = document.getElementById('resultsContainer');
+      const emptyState = document.getElementById('emptyState');
+      const countEl = document.getElementById('resultCount');
+      const badge = document.getElementById('activeFilterBadge');
+
+      countEl.textContent = `Showing ${data.length} exam${data.length === 1 ? '' : 's'}`;
+      
+      const subVal = document.getElementById('filterSubgroup').value;
+      const progVal = document.getElementById('filterProgram').value;
+      badge.textContent = subVal ? subVal : (progVal ? `${progVal} Filtered` : 'All Subgroups');
+
+      if (data.length === 0) {
+        container.innerHTML = '';
+        emptyState.classList.remove('hidden');
+        return;
+      }
+      emptyState.classList.add('hidden');
+
+      if (currentView === 'cards') {
+        container.innerHTML = `
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            ${data.map(item => `
+              <div class="bg-white rounded-xl border border-slate-200 p-4 shadow-xs hover:border-cvsu-500 transition">
+                <div class="flex items-start justify-between gap-2 border-b border-slate-100 pb-2.5 mb-2.5">
+                  <div>
+                    <span class="inline-block text-[11px] font-bold uppercase tracking-wider text-cvsu-700 bg-cvsu-50 px-2 py-0.5 rounded border border-cvsu-200">
+                      ${item.Day} • ${item["Start Time"]}
+                    </span>
+                    <h3 class="text-base font-extrabold text-slate-900 mt-1">${item.Subject}</h3>
+                  </div>
+                  <div class="text-right">
+                    <span class="text-xs font-mono font-bold bg-amber-50 text-amber-800 border border-amber-200 px-2 py-1 rounded-md block">
+                      ${item.Subgroup}
+                    </span>
+                    <span class="text-[10px] text-slate-400 font-mono mt-1 block">ID: ${item["Activity ID"] || '-'}</span>
+                  </div>
+                </div>
+                <div class="space-y-1.5 text-xs text-slate-600">
+                  <div class="flex items-center justify-between">
+                    <span class="font-medium text-slate-400">Proctor:</span>
+                    <span class="font-semibold text-slate-800 text-right">${item.Proctor}</span>
+                  </div>
+                  <div class="flex items-center justify-between">
+                    <span class="font-medium text-slate-400">Room:</span>
+                    <span class="font-bold text-cvsu-700">${item.Room}</span>
+                  </div>
+                  <div class="flex items-center justify-between">
+                    <span class="font-medium text-slate-400">Activity:</span>
+                    <span class="text-slate-600">${item["Activity Tag"]}</span>
+                  </div>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        `;
+      } else {
+        container.innerHTML = `
+          <div class="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-xs">
+            <div class="overflow-x-auto">
+              <table class="w-full text-left text-xs border-collapse">
+                <thead class="bg-slate-50 border-b border-slate-200 text-slate-600 uppercase font-bold text-[10px] tracking-wider">
+                  <tr>
+                    <th class="py-3 px-4">ID</th>
+                    <th class="py-3 px-4">Day</th>
+                    <th class="py-3 px-4">Time</th>
+                    <th class="py-3 px-4">Subject</th>
+                    <th class="py-3 px-4">Subgroup</th>
+                    <th class="py-3 px-4">Room</th>
+                    <th class="py-3 px-4">Proctor</th>
+                    <th class="py-3 px-4">Type</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-100 font-medium">
+                  ${data.map(item => `
+                    <tr class="hover:bg-slate-50/70 transition">
+                      <td class="py-2.5 px-4 font-mono text-slate-400">${item["Activity ID"] || '-'}</td>
+                      <td class="py-2.5 px-4 font-bold text-cvsu-800">${item.Day}</td>
+                      <td class="py-2.5 px-4 font-mono text-slate-600">${item["Start Time"]}</td>
+                      <td class="py-2.5 px-4 font-bold text-slate-900">${item.Subject}</td>
+                      <td class="py-2.5 px-4 font-mono font-bold text-amber-700">${item.Subgroup}</td>
+                      <td class="py-2.5 px-4 font-semibold text-cvsu-700">${item.Room}</td>
+                      <td class="py-2.5 px-4 text-slate-700">${item.Proctor}</td>
+                      <td class="py-2.5 px-4 text-slate-500">${item["Activity Tag"]}</td>
+                    </tr>
+                  `).join('')}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        `;
+      }
+    }
+
+    function exportFilteredCSV() {
+      const prog = document.getElementById('filterProgram').value;
+      const year = document.getElementById('filterYear').value;
+      const sec = document.getElementById('filterSection').value;
+      const directSub = document.getElementById('filterSubgroup').value;
+      const term = document.getElementById('searchInput').value.trim().toLowerCase();
+
+      const toExport = parsedData.filter(item => {
+        if (selectedDay && item.Day !== selectedDay) return false;
+        if (directSub && item.Subgroup !== directSub) return false;
+        if (!directSub) {
+          if (prog && item.parsed.program !== prog) return false;
+          if (year && item.parsed.year !== year) return false;
+          if (sec && item.parsed.section !== sec) return false;
+        }
+        if (term) {
+          const searchable = `${item["Activity ID"] || ''} ${item.Subject} ${item.Proctor} ${item.Room} ${item.Subgroup} ${item["Activity Tag"]}`.toLowerCase();
+          if (!searchable.includes(term)) return false;
+        }
+        return true;
+      });
+
+      if (toExport.length === 0) {
+        alert('No data available to export.');
+        return;
+      }
+
+      const headers = ["Activity ID", "Day", "Start Time", "Duration", "Subject", "Proctor", "Subgroup", "Room", "Activity Tag"];
+      const rows = toExport.map(item => headers.map(h => `"${(item[h] || '').replace(/"/g, '""')}"`).join(','));
+      const csvContent = "data:text/csv;charset=utf-8," + [headers.join(','), ...rows].join('\n');
+
+      const encodedUri = encodeURI(csvContent);
+      const link = document.createElement("a");
+      link.setAttribute("href", encodedUri);
+      link.setAttribute("download", `CvSU_Midterm_Schedule_${new Date().toISOString().split('T')[0]}.csv`);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
+    window.addEventListener('DOMContentLoaded', init);
+  </script>
+</body>
+</html>
